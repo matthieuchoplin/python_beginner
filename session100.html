@@ -1,0 +1,391 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 1</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+	<a href="index.html">Home</a>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+                    ## Introduction to programming using Python
+                    ### Session 1
+					 18:30 - 19:30
+				</section>
+				<section data-markdown>
+### Recommended reading
+* Books:
+ * Automate the boring stuff byt Al Sweigart: https://automatetheboringstuff.com/
+ * Introduction to programming using Python by Daniel Liang
+* Website:
+ * The official python tutorial: https://docs.python.org/3/tutorial/
+				</section>
+				<section data-markdown>
+### Tools
+* IDE: Idle first and then Pycharm
+* Online tool: <a href='http://pythontutor.com/'>pythontutor.com</a>
+				</section>
+				<section data-markdown>
+### Objectives
+* Think like a programmer.
+* Introduction to Python. Variables. Loops. Main method. Conditional structures. Data structure.
+* Functions and methods
+* Debugging in Python. How to read a program.
+* File manipulation: Reading and writing files.
+* Object Oriented programming in Python: classes, objects, inheritance, polymorphism, encapsulation.
+* Introduction to the Python standard library.
+* Testing in Python. Presentation of doctest and unittest.
+* Error handling: exceptions.
+				</section>
+				<section data-markdown>
+### Objectives for Session 1
+* To get a brief overview of what Python is
+* To understand computer basics and programs
+* Installing python and introducing IDLE
+* To understand what statement, variable and expressions are
+* To explain the differences between syntax errors, runtime errors, and logic errors.
+* Write your first python program
+				</section>
+
+				<section>
+<h3 style="margin-bottom: 0px;">Python's popularity</h3>
+<p style="margin-bottom: 0px;">Python has been amongst the top 10 programming languages for more than a decade according to the <a href="http://www.tiobe.com/tiobe_index">Tiobe index</a></p>
+<img data-src="imgs/tiobe-index.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section>
+					<h3>Who uses Python?</h3>
+<img data-src="imgs/python-uses.png" style="background:none; border:none; box-shadow:none; margin-top:0px;">
+				</section>
+				<section>
+<h3>Before going more into details... What is a computer? (1/2)</h3>
+An electronic device that is receiving data input, storing (in RAM) and processing (in the CPU) them and producing information in output.
+<img data-src="imgs/comp.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section>
+<h3>What is a computer? (2/2)</h3>
+<img data-src="imgs/comp2.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section data-markdown>
+### What is a program?
+* Computer programs, known as software, are *instructions to* the computer.
+* You tell a computer what to do through programs. Without programs, a computer is an empty machine. Computers do not understand human languages, so you need to use computer languages to communicate with them.
+* Programs are written using programming languages.
+				</section>
+				<section data-markdown>
+### Different types of Programming Languages
+* **Machine language** is a set of primitive instructions built into every computer. The instructions are in the form of binary code.
+The programs in machine language are highly difficult to read and modify.
+For example, to add two numbers, you might write an instruction in binary like this:
+
+     1101101010011010
+
+* **The high-level languages** are English-like and easy to learn and program.
+For example, the following is a high-level language statement that multiply two number:
+      area = 5 * 5
+				</section>
+				<section data-markdown>
+### Computer works using binary logic.
+* It is extremely difficult for humans to program in binary.
+* Computer languages have to be translated to binary logic for the computer to understand.
+* Two types of translation:
+ * Compilation
+ * Interpretation
+				</section>
+
+				<section>
+<h3>Comparison of interpreted vs compiled</h3>
+<img data-src="imgs/interpreted_vs_compiled.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+
+				<section>
+<h3>Installing python (Windows)</h3>
+	<ul style="font-size: 24px;">
+		<li>Be sure to download a version of <a href="https://www.python.org/downloads/">Python 3.</a></li>
+		<li>You'll find Python installers for 64-bit and 32-bit computers for each operating system on the download page, so first figure out which installer you need.</li>
+		<li>Here's how to find out for sure:</li>
+		<ul>
+			<li>Select Start > Control Panel > System and check whether System Type says 64-bit or 32-bit.</li>
+			<li>Download the Python installer (the filename will end with .msi) and double-click it. Follow the instructions the installer displays on the screen to install Python</li>
+		</ul>
+		<ul>
+			<li>Select Install for All Users and then click Next.</li>
+			<li>Install to the C:\Python34 folder by clicking Next.</li>
+			<li>Click Next again to skip the Customize Python section.</li>
+		</ul>
+	</ul>
+				</section>
+
+				</section>
+				<section>
+<h3>Installing python (OS X)</h3>
+	<ul style="font-size: 24px;">
+		<li>Be sure to download a version of <a href="https://www.python.org/downloads/">Python 3.</a></li>
+		<li>You'll find Python installers for 64-bit and 32-bit computers for each operating system on the download page, so first figure out which installer you need.</li>
+		<li>Here's how to find out for sure:</li>
+		<ul>
+			<li>Go the Apple menu, select About This Mac > More Info > System Report > Hardware, and then look at the Processor Name field. If it says Intel Core Solo or Intel Core Duo, you have a 32-bit machine. If it says anything else (including Intel Core 2 Duo), you have a 64-bit machine.</li>
+		</ul>
+		<li>Download the .dmg file that’s right for your version of OS X and double-click it. Follow the instructions the installer displays on the screen to install Python.</li>
+		<ul>
+			<li>When the DMG package opens in a new window, double-click the Python.mpkg file. You may have to enter the administrator password.</li>
+			<li>Click Continue through the Welcome section and click Agree to accept the license.</li>
+			<li>Select HD Macintosh (or whatever name your hard drive has) and click Install.</li>
+		</ul>
+	</ul>
+				</section>
+
+				<section>
+<h3>Starting IDLE</h3>
+	<ul style="font-size: 24px;">
+		<li>While the Python interpreter is the software that runs your Python programs, the interactive development environment (IDLE) software is where you’ll enter your programs, much like a word processor. Let’s start IDLE now.</li>
+		<li>On Windows 7 or newer, click the Start icon in the lower-left corner of your screen, enter IDLE in the search box, and select IDLE (Python GUI).</li>
+		<li>On Mac OS X, open the Finder window, click Applications, click Python 3.4, and then click the IDLE icon.</li>
+	</ul>
+				</section>
+
+				<section data-markdown>
+### Python Syntax
+* Statement
+* Variable
+* Expression
+* Indentation
+* Comments
+				</section>
+				<section>
+<h3> Python Syntax - Statement</h3>
+<p>A statement represents an action or a sequence of actions. It <strong>does something</strong>.</p>
+<p>To display the greeting "Welcome to Python", we use the <strong>print</strong> statement:</p>
+<pre><code data-trim data-noescape>print("Welcome to Python")</code></pre>
+				</section>
+				<section>
+<h3> Python Syntax - Expression</h3>
+<p>It represents something, like a number or a string. Expressions are nothing but values, except they can have operations like addition or subtraction.</p>
+<pre><code data-trim data-noescape>
+1 # is an expression
+2 + 3 # is also an expression
+"hello" # as well
+</code></pre>
+				</section>
+				<section>
+<h3> Python Syntax - Variable(1/3)</h3>
+<p>It is a space created in memory (in RAM) where we can temporarily store values or data. We use the sign <strong>'='</strong> for assigning a value to a variable.</p>
+<p>You can think of it like a box. For example, we store the value (or expression) 1 in the box (i.e the variable) <strong>a</strong>.</p>
+<p>Notice that we do not specify the type (integer, string) of the variable, python sees it automatically.</p>
+<pre><code data-trim data-noescape>
+a = 1
+</code></pre>
+				</section>
+				<section>
+<h3> Python Syntax - Variable(2/3)</h3>
+<p>You can use the <strong>type</strong> builtin function to determine the type of a value or variable</p>
+<pre><code data-trim data-noescape>
+>>> type(1)
+&lt;class 'int'&gt;
+</code></pre>
+<p>Using the type() function, can you tell what the type of 'abc' is?</p>
+				</section>
+				<section>
+<h3> Python Syntax - Variable (3/3)</h3>
+<pre><code data-trim data-noescape>a = 1</code></pre>
+<p>The variable has a name so that we can reuse it. When we use a variable, it is for retrieving the value that it is holding.</p>
+<iframe data-src="https://trinket.io/embed/python/725d088b65" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+<h3> Python Syntax - Indentation</h3>
+<p>The indentation is the increase or decrease of space between the left margin and the first character of the line.</p>
+<p>The code need to be properly indented, else python will raise an error.</p>
+<p>For example, what is wrong here?</p>
+<iframe data-src="https://trinket.io/embed/python/a3e8a7b792" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+<h3> Python Syntax - Comments</h3>
+<p>If you want to comment a line, you can use the <strong>#</strong> (pound sign) that you place before the commented line</p>
+<p>You can also comment multiple lines using <strong>'''</strong> (triple quote) before and after the commented paragraph</p>
+<p>Example</p>
+<iframe data-src="https://trinket.io/embed/python/e8239dac46" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section data-markdown>
+### The IDE (1/2)
+* We are going to familiarize ourselves with [Pycharm](https://www.jetbrains.com/pycharm/).
+ * Pycharm is an IDE (Integrated Development Environment), it helps you to write code with syntax highlighting, auto-completion and a lot of other features.
+ * Open the python terminal from Pycharm by going to: View > Tool Windows > Python Console
+ * The python terminal is useful for experimenting python code directly, without to run or "launch" a script
+				</section>
+				<section data-markdown>
+### The IDE (2/2)
+* To run a python script
+ * Select the project that you have just created and do a right click and select "New" and "Python file"
+ * Notice the extension of the file that you have created, it should be **.py**
+ * Write ```print("Hello World")``` in the file
+ * You can then run the file as a python script: in the menu at the top you click on Run and Run
+				</section>
+				<section>
+<h3> Experimenting with the python shell in the IDE</h3>
+<p> You can do simple arithmetic operations</p>
+<pre><code data-trim data-noescape>x = 1             # Assign 1 to variable x
+radius = 1.0      # Assign 1.0 to variable radius
+
+# Assign the value of the expression to x
+y = 5 * (3 / 2) + 3 * 2
+
+x = y + 1     # Assign the addition of y and 1 to x
+area = radius * radius * 3.14159 # Compute area
+</code></pre>
+				</section>
+				<section>
+<h3> Exercise 1: run the code as a python script</h3>
+<p> After having experimented in the python shell (or python interpreter):</p>
+<ul>
+	<li>Take the previous script and put it in a <strong>NEW</strong> python file.</li>
+	<li>Run the script</li>
+</ul>
+				</section>
+				<section>
+<h3> Exercise 2:</h3>
+<p>Add a python file to the project</p>
+<ul>
+	<li>Download the python file with this <a href="exercises/session_1_1.py">link</a> (right click and save as)</li>
+	<li>Run the script in Pycharm</li>
+	<li>Change the value of the variable to create your email at city (with the extension @city.ac.uk)</li>
+	<li>Can you explain what is the operator "+" for a string?</li>
+</ul>
+				</section>
+				<section>
+<h3> The different type of errors (1/3)</h3>
+ Syntax Error
+	 <p>For example, when we forget a quote to close a string</p>
+	 <pre><code data-trim data-noescape>print("Welcome to Python)</code></pre>
+				</section>
+				<section>
+				<h3> The different type of errors (2/3)</h3>
+				Runtime Error
+				 <p>For example a division by zero (which is impossible)</p>
+				<pre><code data-trim data-noescape>print(1/0)</code></pre>
+				</section>
+				<section>
+					<h3> The different type of errors (3/3)</h3>
+					Logic error
+					<p>When a program is not doing what we want it to do.</p>
+					<p>For instance, a wrong formulae for converting pound in kg</p>
+					<pre><code data-trim data-noescape>pounds = float(input("Enter weight in pound: "))
+# convert pound in kilogramme
+kilograms = pounds / 0.454</code></pre>
+					<p>It should be:</p>
+					<pre><code data-trim data-noescape>pounds = float(input("Enter weight in pound: "))
+# convert pound in kilogramme
+kilograms = pounds * 0.454</code></pre>
+				</section>
+				<section>
+					<h3> Exercise 3:</h3>
+					<p>
+					Write a program that converts pounds into euros.
+					</p>
+					<ul>
+						<li>The values can be hard coded for now (it means that the program will not be dynamic)</li>
+						<li>Use comments</li>
+						<li>Use variables</li>
+						<li>Use  print</li>
+					</ul>
+				</section>
+				<section>
+					<h3> The input function</h3>
+					<pre><code data-trim data-noescape>myName = input()</code></pre>
+					<p>The input() function waits for the user to type some text on the keyboard and press ENTER.</p>
+				</section>
+				<section>
+					<h3> Exercise 4:</h3>
+					<ul>
+						<li>
+						Write a program that ask the user what amount is to be converted in euros, convert it and display the result.
+						</li>
+						<li>
+						Hint: we are going to need the function <strong>input</strong> and the function <strong>float</strong>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3> Some simple Data Types in Python</h3>
+					<ul>
+						<li>
+						Numeric: int, float
+						</li>
+						<li>
+						String: str
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3> Introspection</h3>
+					<p>Built in functions that enables to introspect your code</p>
+					<ul>
+						<li>
+						help()
+						</li>
+						<li>
+						dir()
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3> Exercise 5</h3>
+					<p>Make a word that a user input in UPPER CASE, i.e. all the letters of the word should be in capital</p>
+					<ul>
+						<li>
+							Use the input function.
+						</li>
+						<li>
+							Put the word in a variable.
+						</li>
+						<li>
+							Use a built in function (the help function) to find the method for that.
+						</li>
+						<li>
+							Use print
+						</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' }
+				]
+			});
+		</script>
+	</body>
+</html>
