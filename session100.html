@@ -35,7 +35,7 @@
 				<section data-markdown>
 ### Recommended reading
 * Books:
- * Automate the boring stuff byt Al Sweigart: https://automatetheboringstuff.com/
+ * Automate the boring stuff by Al Sweigart: https://automatetheboringstuff.com/
  * Introduction to programming using Python by Daniel Liang
 * Website:
  * The official python tutorial: https://docs.python.org/3/tutorial/
@@ -163,31 +163,87 @@ For example, the following is a high-level language statement that multiply two 
 	</ul>
 				</section>
 
+				<section>
+                    <h3>Experimenting with the interpreter and the Numeric Operators</h3>
+					<table style="width:100%">
+					  <tr>
+						<th>Name</th>
+						<th>Meaning</th>
+						<th>Example</th>
+						<th>Result</th>
+					  </tr>
+					  <tr>
+						<td>+</td>
+						<td>Addition</td>
+						<td>34 + 1</td>
+						<td>35</td>
+					  </tr>
+					  <tr>
+						<td>-</td>
+						<td>Substraction</td>
+						<td>34.0 - 0.1</td>
+						<td>33.9</td>
+					  </tr>
+					  <tr>
+						<td>*</td>
+						<td>Multiplication</td>
+						<td>300 * 30</td>
+						<td>9000</td>
+					  </tr>
+					  <tr>
+						<td>/</td>
+						<td>Float division</td>
+						<td>1 / 2</td>
+						<td>0.5</td>
+					  </tr>
+					  <tr>
+						<td>//</td>
+						<td><strong>Integer Division</strong></td>
+						<td>1 // 2</td>
+						<td>0</td>
+					  </tr>
+					  <tr>
+						<td>**</td>
+						<td><strong>Exponentiation</strong></td>
+						<td>4 ** 0.5</td>
+						<td>2.0</td>
+					  </tr>
+					  <tr>
+						<td>%</td>
+						<td><strong>Remainder</strong></td>
+						<td>20 % 3</td>
+						<td>2</td>
+					  </tr>
+					</table>
+				</section>
+
+				<section>
+                    <h3>The % (modulo or remainder) operator (1/2)</h3>
+					<img data-src="imgs/modulo_operator.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section>
+                    <h3>The % (modulo or remainder) operator (2/2)</h3>
+					<p><strong>Remainder or Modulo</strong> is very useful in programming. For example, an even number % 2 is always 0 and an
+						odd number % 2 is always 1. So you can use this property to determine whether a number is even or odd.</p>
+				</section>
+				<section>
+                    <h3>Arithmetic expressions</h3>
+					<img data-src="imgs/arithmetic_expression.png" style="background:none; border:none; box-shadow:none;">
+					<p>...is translated to:</p>
+					<pre class="solution-content python"><code>(3 + 4 * x) / 5 – 10 * (y - 5) * (a + b + c) / x +\
+    9 * (4 / x + (9 + x) / y)</code></pre>
+					<p>NB: the sign <strong>\</strong> is an "escaped" character, to break a line for readability</p>
+				</section>
+
 				<section data-markdown>
 ### Python Syntax
-* Statement
 * Variable
 * Expression
 * Indentation
 * Comments
 				</section>
 				<section>
-<h3> Python Syntax - Statement</h3>
-<p>A statement represents an action or a sequence of actions. It <strong>does something</strong>.</p>
-<p>To display the greeting "Welcome to Python", we use the <strong>print</strong> statement:</p>
-<pre><code data-trim data-noescape>print("Welcome to Python")</code></pre>
-				</section>
-				<section>
-<h3> Python Syntax - Expression</h3>
-<p>It represents something, like a number or a string. Expressions are nothing but values, except they can have operations like addition or subtraction.</p>
-<pre><code data-trim data-noescape>
-1 # is an expression
-2 + 3 # is also an expression
-"hello" # as well
-</code></pre>
-				</section>
-				<section>
-<h3> Python Syntax - Variable(1/3)</h3>
+<h3> Variable (1)</h3>
 <p>It is a space created in memory (in RAM) where we can temporarily store values or data. We use the sign <strong>'='</strong> for assigning a value to a variable.</p>
 <p>You can think of it like a box. For example, we store the value (or expression) 1 in the box (i.e the variable) <strong>a</strong>.</p>
 <p>Notice that we do not specify the type (integer, string) of the variable, python sees it automatically.</p>
@@ -196,20 +252,182 @@ a = 1
 </code></pre>
 				</section>
 				<section>
-<h3> Python Syntax - Variable(2/3)</h3>
-<p>You can use the <strong>type</strong> builtin function to determine the type of a value or variable</p>
+<h3>Variable (2)</h3>
+<pre><code data-trim data-noescape>a = 1</code></pre>
+<p>The variable has a name so that we can reuse it. When we use a variable, it is for retrieving the value that it is holding.</p>
 <pre><code data-trim data-noescape>
+>>> a = 1
+>>> a
+1
+</code></pre>
+				</section>
+
+				<section>
+                    <h3>Variable (3)</h3>
+					<ul>
+						<li>A variable name is a non-empty sequence of characters of any length with:</li>
+						<ul>
+							<li>The start character can be the underscore "_" or a capital or lower case letter.</li>
+							<li>Python keywords are not allowed as identifier names!</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Variable (4)</h3>
+					<table style="width:100%">
+					  <tr>
+						<td> and </td>
+						<td> as </td>
+						<td> assert </td>
+						<td> break </td>
+						<td> class </td>
+						<td> continue </td>
+						<td> def </td>
+					  </tr>
+					  <tr>
+						<td> del </td>
+						<td> elif </td>
+						<td> else </td>
+						<td> except </td>
+						<td> exec </td>
+						<td> finally </td>
+						<td> for </td>
+					  </tr>
+					  <tr>
+						<td> from </td>
+						<td> global </td>
+						<td> if </td>
+						<td> import </td>
+						<td> in </td>
+						<td> is </td>
+						<td> lambda </td>
+					  </tr>
+					  <tr>
+						<td> not </td>
+						<td> or </td>
+						<td> pass </td>
+						<td> print </td>
+						<td> raise </td>
+						<td> return </td>
+						<td> try </td>
+					  </tr>
+					  <tr>
+						<td> while </td>
+						<td> with </td>
+						<td> yield </td>
+					  </tr>
+					</table>
+				</section>
+
+				<section>
+<h3> Python Syntax - Expression</h3>
+<p>It represents something, like a number or a string. Expressions are nothing but values, except they can have operations like addition or subtraction.</p>
+<pre><code data-trim data-noescape>
+>>> 1 # is an expression
+>>> 2 + 3 # is also an expression
+>>> "hello" # as well
+</code></pre>
+<p>We can put an expression (i.e. a value) in a variable</p>
+				</section>
+
+				<section>
+				<h3> Using the function print</h3>
+				<p>The <strong>print</strong> function displays what is given in parameter.</p>
+					<pre><code data-trim data-noescape>
+>>> print("Hello World")
+</code></pre>
+					<ul>
+						<li>A function has a name</li>
+						<li>A function has parameters (that can be optional)</li>
+						<li>A function is executed!</li>
+					</ul>
+				</section>
+
+				<section>
+                    <h3>Exercise 1: From algorithm to Python code</h3>
+					<ul>
+						<li>Translate the following algorithm into Python code:</li>
+							<ul>
+								<li>Step 1: Use a variable named <em>miles</em> with initial value 100 .</li>
+								<li>Step 2: Multiply <em>miles</em> by 1.609 and assign it to a variable named kilometers</li>
+								<li>Step 3: Display the value of kilometers with the function print()</li>
+							</ul>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>miles = 100
+kilometers = miles * 1.609
+print(kilometers)</code></pre>
+					</div>
+				</section>
+				<section>
+                    <h3>Exercise 2.1: Area of a squared room</h3>
+					<ul>
+						<li>The <em>length</em> and <em>width</em> are hardcoded variables for now.</li>
+						<li>Use variables (for length, width and area)</li>
+						<li>The multiply operator in Python is the sign<strong>*</strong></li>
+						<li>Formulae of the area of a square: length * width</li>
+						<li>Use the <strong>print()</strong> function to display the result</li>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>length = 3
+width = 4
+area = length * width  # we are using variables defined above
+print("The area of the squared room of length", \
+	length, "and width", width, "is", area)</code></pre>
+					</div>
+				</section>
+
+				<section>
+				<h3> Using the function input()</h3>
+				<p>The input() function waits for the user to type some text on the keyboard and press ENTER.</p>
+					<pre><code data-trim data-noescape>
+>>> a =  input("Enter a value")
+a
+</code></pre>
+				</section>
+
+				<section>
+				<h3> Using the function type()</h3>
+				<p>The <strong>function type</strong> gives the type of a value</p>
+					<pre><code data-trim data-noescape>
 >>> type(1)
 &lt;class 'int'&gt;
 </code></pre>
-<p>Using the type() function, can you tell what the type of 'abc' is?</p>
+					<p>Using the type() function, can you tell what the type of 'abc' is?</p>
 				</section>
+
 				<section>
-<h3> Python Syntax - Variable (3/3)</h3>
-<pre><code data-trim data-noescape>a = 1</code></pre>
-<p>The variable has a name so that we can reuse it. When we use a variable, it is for retrieving the value that it is holding.</p>
-<iframe data-src="https://trinket.io/embed/python/725d088b65" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				<h3> Using the function float()</h3>
+				<p>The <strong>function float</strong> is converting a value into a numeric value if possible</p>
+					<pre><code data-trim data-noescape>
+>>> float("234")
+234
+</code></pre>
 				</section>
+
+				<section>
+                    <h3 style="margin-bottom: 0px;">Exercise 2.2: Dynamic Area</h3>
+					<ul>
+						<li>The <em>length</em> and <em>width</em> are dynamic variables now.</li>
+						<li>Use the <strong>input()</strong> function for taking the values from the user.</li>
+						<li>Convert the input received into a number with the function <strong>float()</strong></li>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>length = float(input("What is the length of the room? "))
+width = float(input("What is the width of the room? "))
+area = length * width  # using variables defined above
+print("The area of the squared room of length", \
+	length, "and width", width, "is", area)</code></pre>
+					</div>
+				</section>
+
 				<section>
 <h3> Python Syntax - Indentation</h3>
 <p>The indentation is the increase or decrease of space between the left margin and the first character of the line.</p>
@@ -217,6 +435,7 @@ a = 1
 <p>For example, what is wrong here?</p>
 <iframe data-src="https://trinket.io/embed/python/a3e8a7b792" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 				</section>
+
 				<section>
 <h3> Python Syntax - Comments</h3>
 <p>If you want to comment a line, you can use the <strong>#</strong> (pound sign) that you place before the commented line</p>
@@ -224,37 +443,7 @@ a = 1
 <p>Example</p>
 <iframe data-src="https://trinket.io/embed/python/e8239dac46" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 				</section>
-				<section>
-<h3> Experimenting with the python shell in the IDE</h3>
-<p> You can do simple arithmetic operations</p>
-<pre><code data-trim data-noescape>x = 1             # Assign 1 to variable x
-radius = 1.0      # Assign 1.0 to variable radius
 
-# Assign the value of the expression to x
-y = 5 * (3 / 2) + 3 * 2
-
-x = y + 1     # Assign the addition of y and 1 to x
-area = radius * radius * 3.14159 # Compute area
-</code></pre>
-				</section>
-				<section>
-<h3> Exercise 1: run the code as a python script</h3>
-<p> After having experimented in the python shell (or python interpreter):</p>
-<ul>
-	<li>Take the previous script and put it in a <strong>NEW</strong> python file.</li>
-	<li>Run the script</li>
-</ul>
-				</section>
-				<section>
-<h3> Exercise 2:</h3>
-<p>Add a python file to the project</p>
-<ul>
-	<li>Download the python file with this <a href="exercises/session_1_1.py">link</a> (right click and save as)</li>
-	<li>Run the script in Pycharm</li>
-	<li>Change the value of the variable to create your email at city (with the extension @city.ac.uk)</li>
-	<li>Can you explain what is the operator "+" for a string?</li>
-</ul>
-				</section>
 				<section>
 <h3> The different type of errors (1/3)</h3>
  Syntax Error
@@ -281,7 +470,7 @@ kilograms = pounds / 0.454</code></pre>
 kilograms = pounds * 0.454</code></pre>
 				</section>
 				<section>
-					<h3> Exercise 3:</h3>
+					<h3> Exercise:</h3>
 					<p>
 					Write a program that converts pounds into euros.
 					</p>
@@ -293,29 +482,13 @@ kilograms = pounds * 0.454</code></pre>
 					</ul>
 				</section>
 				<section>
-					<h3> The input function</h3>
-					<pre><code data-trim data-noescape>myName = input()</code></pre>
-					<p>The input() function waits for the user to type some text on the keyboard and press ENTER.</p>
-				</section>
-				<section>
-					<h3> Exercise 4:</h3>
+					<h3> Exercise:</h3>
 					<ul>
 						<li>
 						Write a program that ask the user what amount is to be converted in euros, convert it and display the result.
 						</li>
 						<li>
 						Hint: we are going to need the function <strong>input</strong> and the function <strong>float</strong>
-						</li>
-					</ul>
-				</section>
-				<section>
-					<h3> Some simple Data Types in Python</h3>
-					<ul>
-						<li>
-						Numeric: int, float
-						</li>
-						<li>
-						String: str
 						</li>
 					</ul>
 				</section>
@@ -338,7 +511,12 @@ kilograms = pounds * 0.454</code></pre>
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/menu/menu.js' }
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/skulpt.min.js' },
+					{ src: 'plugin/skulpt-stdlib.js' },
+					{ src: 'plugin/custom.js' },
+
 				]
 			});
 		</script>
