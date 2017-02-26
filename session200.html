@@ -1,0 +1,666 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 2</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+	<a href="index.html">Home</a>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+                    ## Introduction to programming using Python
+                    ### Session 2
+					 18:30 - 19:30
+				</section>
+
+				<section data-markdown>
+### Objectives of Session 2
+* Remainder of Session 1: Quizz + exercices
+* Controlling the flow of our programs
+  * Conditional statements
+  * The boolean type
+  * While loop
+  * For loop
+
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (1)
+
+* Which of the following are operators, and which are values?
+
+ - *
+ - 'hello'
+ - -88.8
+ - -
+ - /
+ - +
+ - 5
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (2)
+
+* Which of the following is a variable, and which is a string?
+
+ - spam
+ - 'spam'
+
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (3)
+
+* Name three data types.
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (4)
+
+* What is an expression made up of? What do all expressions do?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (5)
+
+* What does the variable bacon contain after the following code runs?
+
+```
+bacon = 20
+bacon + 1
+```
+                </section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (6)
+
+* Name 3 builtin functions and explain what they do
+                </section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (7)
+
+* How do you call a function?
+                </section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (8)
+
+* What function can you use to take a value from a user? For example, how can you ask the age of a user and store it into a variable?
+                </section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (9)
+
+* What function can you use to convert the age entered by the user and compute the years when he was born?
+                </section>
+
+				<section data-markdown>
+### Remainder of Session 1: Quizz (10)
+
+* Name three types of errors that we can get in a program
+                </section>
+
+				<section>
+					<h3> Exercise 1: converting a currency (static version)</h3>
+					<p>
+					Write a program that converts pounds into euros.
+					</p>
+					<ul>
+						<li>The values can be hard coded for now (it means that the program will not be dynamic)</li>
+						<li>Use comments</li>
+						<li>Use variables</li>
+						<li>Use  print</li>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>rate = 0.8
+pounds = 100
+euros = pound * rate
+print(pounds, "pounds is", euros, "euros")</code></pre>
+					</div>
+				</section>
+				<section>
+					<h3> Exercise 2: converting a currency (dynamic version)</h3>
+					<ul>
+						<li>
+						Write a program that ask the user what amount is to be converted in euros, convert it and display the result.
+						</li>
+						<li>
+						Hint: we are going to need the function <strong>input</strong> and the function <strong>float</strong>
+						</li>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>rate = 0.8
+pounds = float(
+    input("Enter the amount you would like to convert and press ENTER "))
+euros = pound * rate
+print(pounds, "pounds is", euros, "euros")</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3> Exercise 3: computing the age of the user</h3>
+					<ul>
+						<li>
+						Ask a user to enter the year he was born, compute his age and tell him how old he will turn this current year.
+						</li>
+					</ul>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code>today_year = 2017
+year_born = float(
+    input("Enter the year when you were born and press ENTER: "))
+age = today_year - year_born
+print("This year you are turning", age)</code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3> Exercise 4: fixing bugs</h3>
+					<ul>
+						<li>
+						Explain what this program is supposed to do and what the bug is here:
+						</li>
+					</ul>
+
+<pre class="solution-content python"><code>vat_rate = 20/100
+car_price = 34500
+car_price * 0.8
+print("The gross value of the car is", car_price, "pounds")
+</code></pre>
+				</section>
+
+                <section>
+                    <h3>Controlling the flow of our programs</h3>
+                    <p>We can represent the flow of execution with a flow chart</p>
+                    <img data-src="imgs/flow_chart.png" style="background:none; border:none; box-shadow:none;">
+                </section>
+                <section>
+                    <h3>Structure of a simple if statement</h3>
+                    <p>Pseudo code:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if condition:
+    # statement (mind the indentation)</code></pre>
+                    <p>Example, representation of the flow chart example in python code:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if name=='Alice':
+    print('Hi Alice')</code></pre>
+                </section>
+                <section>
+                    <h3>The two-way if statement</h3>
+                    <p>Pseudo code:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if condition:
+    # statement (mind the indentation)
+else:
+    # statement executed when the condition is False
+                    </code></pre>
+                    <p>Example, representation of the flow chart example in python code with an else statement:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if name=='Alice':
+    print('Hi Alice')
+else:
+    print('Hi')</code></pre>
+                </section>
+                <section>
+                    <h3>Multiple Alternative if Statements</h3>
+                    <p>The naive way</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if condition:
+    # statement (mind the indentation)
+else:
+    if condition:
+        # statement executed when
+        # the previous condition is False
+    else:
+        # statement executed when none of
+        # the previous condition is verified
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Multiple Alternative if Statements</h3>
+                    <p>The better way, the pythonc way</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>if condition:
+    # statement (mind the indentation)
+elif condition:
+    # statement executed when
+    # the previous condition is False
+elif condition:
+    # statement executed when none of
+    # the previous condition is verified
+else:
+    # executed when all conditions are False</code></pre>
+                </section>
+				<section>
+                    <h3>Value of the condition</h3>
+                    <p>The program will execute the statement only if the condition is verified. Only if the condition is True.</p>
+                    <p>The condition is actually a <strong>boolean</strong>.</p>
+				</section>
+				<section>
+                    <h3>The Boolean Type</h3>
+                    <ul>
+                        <li>It has only 2 possible values: <strong>True</strong> or <strong>False</strong>.
+                            Notice that they are both capitalized, which is important because Python is case sensitive</li>
+                        <li>It is often obtained as a result of a comparison expression.</li>
+                    </ul>
+				</section>
+				<section>
+                    <h3>The Comparison Operators</h3>
+					<table style="width:100%">
+					  <tr>
+						<th>Operator</th>
+						<th>Meaning</th>
+					  </tr>
+					  <tr>
+						<td>&lt;</td>
+						<td>less than</td>
+					  </tr>
+					  <tr>
+						<td><=</td>
+						<td>less than or equal</td>
+					  </tr>
+					  <tr>
+						<td>&gt;</td>
+						<td>greater than</td>
+					  </tr>
+					  <tr>
+						<td>&gt;=</td>
+						<td>greater than or equal</td>
+					  </tr>
+					  <tr>
+						<td>==</td>
+						<td>equal to</td>
+					  </tr>
+					  <tr>
+						<td>!=</td>
+						<td>not equal to</td>
+					  </tr>
+					</table>
+				</section>
+                <section>
+                    <h3>Examples</h3>
+                    <iframe src="https://trinket.io/embed/python3/d37009e282?runMode=console" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+                <section>
+                    <h3>Difference between '==' and '='</h3>
+                    <ul>
+                        <li>The sign <strong>=</strong> is the sign of <strong>assignment</strong>, it is used for assigning a value to a variable</li>
+                        <li>The sign <strong>==</strong> is the sign of <strong>comparison</strong>, it compares 2 values and return a boolean (True or False)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Exercise: password</h3>
+                    <p>Create a program that ask the user for a password.</p>
+                    <ul>
+                        <li>Have the password defined in "clear" in your program, in a variable called "PASSWORD"</li>
+                        <li>Use input() to receive the password entered by the user</li>
+                        <li>If the word entered by the user matches the password, display "Access Granted", else, "Forbidden"</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solution: password</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>PASSWORD = 'super_password123'
+password_entered = input("Enter the password: ")
+if password_entered == PASSWORD:
+    print("Access Granted")
+else:
+    print("Forbidden")
+                    </code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Truth tables</h3>
+                    <p>Show every possible result of a Boolean operator.</p>
+                    <h4>The <strong>and</strong> Operator’s Truth Table</h4>
+                    <table>
+                    <tr>
+                        <th>Expression</th>
+                        <th>Evaluates to...</th>
+                    </tr>
+
+
+                    <tr>
+                        <td>True and True</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>True and False</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>False and True</td>
+                        <td>False</td>
+                    </tr>
+                    <tr>
+                        <td>False and False</td>
+                        <td>False</td>
+                    </tr>
+                    </table>
+                </section>
+                <section>
+                    <h4>The <strong>or</strong> Operator’s Truth Table</h4>
+                    <table>
+                    <tr>
+                        <th>Expression</th>
+                        <th>Evaluates to...</th>
+                    </tr>
+                    <tr>
+                        <td>True or True</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>True or False</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>False or True</td>
+                        <td>True</td>
+                    </tr>
+                    <tr>
+                        <td>False or False</td>
+                        <td>False</td>
+                    </tr>
+                    </table>
+                </section>
+                <section>
+                    <h4>The <strong>not</strong> Operator</h4>
+                    <p>It operates on only one Boolean value (or expression).
+                        The not operator simply evaluates to the opposite Boolean value.</p>
+                    <iframe src="https://trinket.io/embed/python3/fec9e65f1f?runMode=console" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+                <section>
+                    <h3>Exercise: password and login</h3>
+                    <p>Create a program that ask the user for a login and password.</p>
+                    <ul>
+                        <li>Have the password "PASSWORD" AND login "LOGIN" defined in "clear" in your program, in variables</li>
+                        <li>Use input() to receive the password and login entered by the user</li>
+                        <li>If login and password match the values of your PASSWORD and LOGIN, display "Access Granted", else, "Forbidden"</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solution: password and login</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>PASSWORD = 'super_password123'
+LOGIN = 'superadmin'
+login_entered = input("Enter the login: ")
+password_entered = input("Enter the password: ")
+if password_entered == PASSWORD \
+    and login_entered == LOGIN:
+    print("Access Granted")
+else:
+    print("Forbidden")
+                    </code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Exercise: check number divisor</h3>
+                    <p>Write a program that prompts the user to enter an integer. If the number is a multiple of 5, print HiFive.
+                        If the number is divisible by 2, print HiEven.</p>
+                    <ul>
+                        <li>Use input() take the user input</li>
+                        <li>Use int() to convert the value return by input into an integer</li>
+                        <li>Use % to see if a number x is divisible by an other number y, if x%y returns 0, then x is divisible by y</li>
+                        <li>Use print()</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solution: control flow</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>number_x = int(input("Enter an integer: "))
+if number_x % 5 == 0:
+    print("HiFive")
+if number_x % 2 == 0:
+    print("HiEven")
+                    </code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Exercise: grading students</h3>
+                    <p>Write a program that is going to give the grade of a student according to the score obtained.</p>
+                    <ul>
+                        <li>Display 'A' if the score is greater than 90</li>
+                        <li>Display 'B' if the score is between 80 and 90</li>
+                        <li>Display 'C' if the score is between 70 and 80</li>
+                        <li>Display 'D' if the score is between 60 and 70</li>
+                        <li>Display 'F' if the score is lower than 60</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solution: grading students</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>score = int(input("Enter the score: "))
+if score >= 90.0:
+    grade = 'A'
+elif score >= 80.0:
+    grade = 'B'
+elif score >= 70.0:
+    grade = 'C'
+elif score >= 60.0:
+    grade = 'D'
+else:
+    grade = 'F'
+print('The grade is ', grade)
+</code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Exercise: determining a leap year</h3>
+                    <p>This program first prompts the user to enter a year as an int value and checks if it is a leap year.</p>
+                    <p>A year is a leap year if it is divisible by 4 but not by 100, or it is divisible by 400.</p>
+                    <ul>
+                        <li>Use input() to take the user input (the year, i.e. 2016) and convert it with int()</li>
+                        <li>Use % to see if a number x is divisible by an other number y, if x%y returns 0, then x is divisible by y</li>
+                        <li>Check if the year is divisible by 4 AND not divisible by 100</li>
+                        <li>OR check if the year is divisible by 400.</li>
+                        <li>Use print()</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Solution: determining a leap year</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Complete solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape style="margin-bottom: 0px; font-size: 16px;">
+year = input("Enter a year : ")
+year = int(year)
+leap_year = False # boolean value saying if
+                  # the year is a leap_year or not
+if year % 400 == 0:
+    leap_year = True
+elif year % 4 == 0:
+	if year % 100 != 0:
+    	leap_year = True
+else:
+    leap_year = False
+if leap_year:
+    print("The year entered is a leap year.")
+else:
+    print("The year entered is not a leap year.")
+</code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Solution optimized: determining a leap year</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Condition to use</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide hint</p>
+<pre class="solution-content python"><code data-trim data-noescape>(year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)</code></pre>
+					</div>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Complete solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>year = int(input("Enter a year: "))
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("The year is a leap year")
+else:
+    print("The year is not a leap year")
+</code></pre>
+					</div>
+                </section>
+                <section>
+                    <h3>Exercise: Chinese Zodiac sign</h3>
+                    <p>Now let us write a program to find out the Chinese Zodiac sign
+                        for a given year. The Chinese Zodiac sign is based on a <strong>12-year cycle</strong>,
+                        each year being represented by an animal: rat, ox, tiger, rabbit, dragon,
+                        snake, horse, sheep, monkey, rooster, dog, and pig, in this cycle</p>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Hint 1</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide hint 1</p>
+                        <p class="solution-content python">Use the modulo (%).</p>
+					</div>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Hint 2</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide hint 2</p>
+                        <p class="solution-content python">2016 is the year of the monkey and 2016 % 12 equals 0</p>
+					</div>
+                </section>
+                <section>
+                    <h3>Exercise: Chinese Zodiac sign</h3>
+
+                    <table style="margin-bottom: 0px; font-size: 22px;">
+                        <tr>
+                            <th>Year</th>
+                            <th>Zodiac sign</th>
+                        </tr>
+                        <tr>
+                            <th>0</th>
+                            <th>monkey</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>rooster</th>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>dog</th>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>pig</th>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <th>rat</th>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <th>ox</th>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <th>tiger</th>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <th>rabbit</th>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <th>dragon</th>
+                        </tr>
+                        <tr>
+                            <th>9</th>
+                            <th>snake</th>
+                        </tr>
+                        <tr>
+                            <th>10</th>
+                            <th>horse</th>
+                        </tr>
+                        <tr>
+                            <th>11</th>
+                            <th>sheep</th>
+                        </tr>
+                    </table>
+                </section>
+				<section>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Complete solution</p>
+						<p class="hide-solution" style="margin-top: 0px; margin-bottom: 0px;"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+						<pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 18px;margin-top: 0px; margin-bottom: 0px;">year = eval(input("Enter a year: "))
+zodiacYear = year % 12
+if zodiacYear == 0:
+    print("monkey")
+elif zodiacYear == 1:
+    print("rooster")
+elif zodiacYear == 2:
+    print("dog")
+elif zodiacYear == 3:
+    print("pig")
+elif zodiacYear == 4:
+    print("rat")
+elif zodiacYear == 5:
+    print("ox")
+elif zodiacYear == 6:
+    print("tiger")
+elif zodiacYear == 7:
+    print("rabbit")
+elif zodiacYear == 8:
+    print("dragon")
+elif zodiacYear == 9:
+    print("snake")
+elif zodiacYear == 10:
+    print("horse")
+else:
+    print("sheep")</code></pre></div>
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/skulpt.min.js' },
+					{ src: 'plugin/skulpt-stdlib.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
