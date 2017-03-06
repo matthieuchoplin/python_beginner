@@ -1,0 +1,691 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 3</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+	<a href="index.html">Home</a>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+                    ## Introduction to programming using Python
+                    ### Session 3
+					 18:30 - 19:30
+				</section>
+
+				<section data-markdown>
+### Objectives of Session 3
+* Remainder of Session 2: Quiz + exercices
+* Controlling the flow of our programs
+  * While loop
+  * For loop
+  * Functions
+  * Modularity
+  * Exceptions handling
+
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (1)
+
+* What are the two values of the **Boolean data type**? How do you write them?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (2)
+
+* What are the three **Logical Boolean operators**?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (3)
+
+* Write out the truth tables of each Boolean operator (that is, every possible combination of Boolean values for the operator and what they evaluate to).
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (4)
+
+* What do the following expressions evaluate to?
+
+ - (5 > 4) and (3 == 5)
+ - not (5 > 4)
+ - (5 > 4) or (3 == 5)
+ - not ((5 > 4) or (3 == 5))
+ - (True and True) and (True == False)
+ - (not False) or (not True)
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (5)
+
+* What are the six **comparison operators**?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (6)
+
+* What is the difference between the **"equal to"** operator and the **"assignment"** operator?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (7)
+
+* Explain what a **condition** is and where you would use one.
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (8)
+
+*  Identify the three **blocks** in this code:
+<div ><pre ><code>
+spam = 0
+if spam == 10:
+    print('eggs')
+    if spam > 5:
+        print('bacon')
+    else:
+        print('ham')
+    print('spam')
+print('spam')
+</code></pre></div>
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (9)
+
+*  Write code that prints "Hello" if 1 is stored in spam, prints "Howdy" if 2 is stored in spam, and prints "Greetings!" if anything else is stored in spam.
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 2: Quiz (10)
+
+*  What is wrong in the following code? What happened if you run it?
+
+<div ><pre ><code>
+radius = -20
+if radius > 0:
+    area = radius * radius * 3.14
+print("The area is", area)
+</code></pre></div>
+				</section>
+
+                <section>
+                    <h3>Objectives</h3>
+					<ul>
+                        <li>Looping with <strong>while</strong></li>
+                        <li>Looping with <strong>for</strong></li>
+					</ul>
+				</section>
+
+                <section>
+                    <h3>Motivation</h3>
+					<p>On one of our previous programs, we asked the user to enter a password.</p>
+					<ul>
+						<li>If the password was correct, we printed "Access Granted"</li>
+						<li>Else, we printed, "Forbidden"</li>
+					</ul>
+					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>PASSWORD = 'super_password123'
+password_entered = input("Enter the password: ")
+if password_entered == PASSWORD:
+    print("Access Granted")
+else:
+    print("Forbidden")</code></pre></div>
+				</section>
+				<section>
+                    <h3>Motivation</h3>
+					<p>However, the user only had <em>one chance</em> to enter a correct password.
+						If the password was incorrect or correct, the program would stop.</p>
+					<p>What if we want to make the user able to try more than once to enter a correct password?</p>
+				</section>
+				<section>
+                    <h3>Structure of the while loop</h3>
+					<div ><pre ><code>while condition:
+    # statement</code></pre></div>
+					<p>Where:</p>
+					<ul>
+						<li>The <strong>condition</strong> is an expression that takes the value True or False (boolean)</li>
+						<li>The <strong>statement</strong> does something, mind the <strong>indentation</strong></li>
+						<li><strong>While</strong> the condition is True, the <strong>statement</strong> or <strong>body</strong> of the <strong>loop</strong> is executed</li>
+						<li>Each time that the body of the loop is executed is an <strong>iteration</strong></li>
+					</ul>
+				</section>
+				<section>
+                    <h3 style="margin-bottom: 0px;">Structure of the while loop, flow chart</h3>
+					<img data-src="imgs/flow_chart_loop.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section>
+                    <h3>The while loop applied to our problem</h3>
+					<div ><pre ><code>PASSWORD = 'super_password123'
+password_entered = ''
+while password_entered!=PASSWORD:
+    password_entered = input("Enter the password: ")
+    if password_entered == PASSWORD:
+        print("Access Granted")
+    else:
+        print("Forbidden")</code></pre></div>
+					<p>Where:</p>
+					<ul>
+						<li>The <strong>condition</strong> is the boolean value given by the comparison of the password_entered compared to PASSWORD</li>
+					</ul>
+				</section>
+				<section>
+                    <h3 style="margin-bottom: 0px;">Structure of the while loop, flow chart</h3>
+					<img data-src="imgs/flow_chart_loop_ex.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+				<section>
+                    <h3>Reminder: using variable</h3>
+					<p>You cannot use a variable that has not been declared</p>
+					<div ><pre ><code>PASSWORD = 'super_password123'
+while password_entered!=PASSWORD:
+    password_entered = input("Enter the password: ")
+    if password_entered == PASSWORD:
+        print("Access Granted")
+    else:
+        print("Forbidden")</code></pre></div>
+					<p>Can you see why this is wrong? Try to run this program. See the error and explain what you need to correct.</p>
+				</section>
+				<section>
+                    <h3>Reminder: using variable</h3>
+					<p>You need to declare the variable <em>password_entered</em> before using it, else, you get:</p>
+					<pre>NameError: name 'password_entered' is not defined</pre>
+					<div ><pre ><code>PASSWORD = 'super_password123'
+password_entered = ''
+while password_entered!=PASSWORD:
+    password_entered = input("Enter the password: ")
+    if password_entered == PASSWORD:
+        print("Access Granted")
+    else:
+        print("Forbidden")</code></pre></div>
+				</section>
+				<section>
+                    <h3>How to avoid infinite loop</h3>
+					<p>Make sure that the condition gets False at some point during the execution of the program</p>
+					<p>You can implement a counter, to limit the number of <strong>iterations</strong>:</p>
+					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>counter=0
+while counter < 5:
+    counter = counter + 1 # that you can also write counter+=1
+    print('test infinite loop')</code></pre></div>
+					<p style="margin-bottom: 0px; font-size: 28px;">NB: <code>counter = counter + 1</code> is equivalent to <code>counter += 1</code></p>
+					<p>We say that we <strong>increment</strong> the counter at each <strong>iteration</strong></p>
+				</section>
+				<section>
+                    <h3>The keyword break</h3>
+					<p>Instead of a condition, you can also use the keyword <strong>break</strong> to end the iteration of a loop.</p>
+					<iframe src="https://trinket.io/embed/python3/704e3a69e0" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>The keyword continue</h3>
+					<p>You can use the keyword <strong>continue</strong> to ignore the remaining code in the iteration and jump to the next iteration</p>
+					<iframe src="https://trinket.io/embed/python3/877b4a74e6" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>Combining break and continue</h3>
+					<iframe src="https://trinket.io/embed/python3/266671ebc7" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>Exercise: quit the program with <strong>Q</strong></h3>
+					<p>Enable the use to enter some text and only quit the program if he clicks on "q" or "Q"</p>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Hint</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide hint</p>
+                        <p class="solution-content python">Use the <strong>break</strong> keyword.</p>
+					</div>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>while True:
+    my_input = input('Type "q" or "Q" to quit: ')
+    if my_input.upper() == "Q":
+        break</code></pre>
+					</div>
+				</section>
+				<section>
+                    <h3>Sentinel value</h3>
+					<p>This is what you have just used in the previous exercise.</p>
+					<p>A sentinel value is a value entered by the user (with input) that will make the program stop. You can put a sentinel value in your loop to decide when you want to <strong>break</strong> it, to stop it.</p>
+				</section>
+				<section>
+                    <h3>Exercise: compute average</h3>
+					<p style="margin-bottom: 0px; font-size: 20px;">Count positive and negative numbers and compute the average of numbers</p>
+					<p style="margin-bottom: 0px; font-size: 18px;">Write a program that reads an unspecified number of integers, determines how many positive
+and negative values have been read, and computes the total and average of the input values
+(not counting zeros). Your program ends with the input 0. Display the average as a floating point
+number. Here is a sample run:</p>
+					<pre style="margin-bottom: 0px; font-size: 18px;">Enter an integer, the input ends if it is 0: 1
+Enter an integer, the input ends if it is 0: 2
+Enter an integer, the input ends if it is 0: -1
+Enter an integer, the input ends if it is 0: 3
+Enter an integer, the input ends if it is 0: 0
+The number of positives is 3
+The number of negatives is 1
+The total is 5
+The average is 1.25
+Enter an integer, the input ends if it is 0: 0
+You didn't enter any number</pre>
+				</section>
+				<section>
+                    <h3>Solution: compute average</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<p class="solution-content python">Download solution here:<a href="exercises/count_positive_negative_num.py">count_positive_negative_num.py</a> (right click and save as)</p>
+					</div>
+				</section>
+
+				<section>
+                    <h3>Structure of the for loop</h3>
+					<div ><pre class="solution-content python"><code>for element in sequence:
+    # statement</code></pre></div>
+					<p>Where:</p>
+					<ul>
+						<li><strong>element</strong> is a variable that is going to take the value of each element of the sequence</li>
+						<li><strong>element</strong> is NOT a keyword, it is a variable name, so you can give it whatever name you want</li>
+						<li>the keywords are <strong>for</strong> and <strong>in</strong></li>
+						<li>notice the indentation that indicates the <strong>body</strong> of the loop (same as for <strong>while</strong>)</li>
+					</ul>
+				</section>
+				<section>
+                    <h3>Example: a string is a sequence</h3>
+					<p>A string is a sequence of characters on which we can iterate.</p>
+					<p>The value of <strong>element</strong> is going to be the value of each character of the string (each letter of the word) successively</p>
+					<iframe src="https://trinket.io/embed/python3/1548e510ff" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>The function range</h3>
+					<p>You can create a sequence of numbers with the function <strong>range()</strong></p>
+					<div ><pre class="solution-content python"><code>for element in range(initialValue, endValue, step):
+    # statement</code></pre></div>
+					<p>Where:</p>
+					<ul>
+						<li><strong>initialValue</strong> and step value are optional arguments</li>
+						<li>The default initialValue is 0 and the <strong>endValue</strong> is excluded from the interval</li>
+						<li><strong>step</strong> represents the increment and can be positive or negative</li>
+					</ul>
+				</section>
+				<section>
+                    <h3>Example: range(initialValue, endValue)</h3>
+					<p>Notice how the endValue is excluded</p>
+					<iframe src="https://trinket.io/embed/python3/8c9818da3a" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>Example: range(initialValue, endValue, step)</h3>
+					<p>Step specifies the increment</p>
+					<iframe src="https://trinket.io/embed/python3/3e819818a0" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>Exercise: conversion from miles to kilometers</h3>
+					<p>Write a program that displays the following table (note that 1 mile is 1.609 kilometres):</p>
+					<pre>Miles Kilometres
+1 1.609
+2 3.218
+...
+9 15.481
+10 16.090</pre>
+				</section>
+				<section>
+                    <h3>Solution: conversion from miles to kilometers</h3>
+					<div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>print("Miles"+ "   " + "Kilometers")
+miles = 1
+while miles <= 10:
+    print(str(miles) + "   "+  str(miles * 1.609))
+    miles += 1
+</code></pre>
+					</div>
+				</section>
+
+                <section>
+                    <h3>Exercise Bonus: find if a string is a Palindrome</h3>
+                    <p>A string is a palindrome if it is identical forward and backward. For example “anna”,
+“civic”, “level” and “hannah” are all examples of palindromic words. Write a program
+that reads a string from the user and uses a loop to determines whether or not it is a
+palindrome. Display the result, including a meaningful output message.</p>
+                </section>
+
+                <section>
+                    <h3>Solution: Palindrome</h3>
+                    <div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+						<p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+<pre class="solution-content python"><code data-trim data-noescape>line = input('Enter a string: ')
+
+is_palindrome = True
+
+for i in range(0, len(line) // 2):
+    if line[i] != line[len(line) - 1 - i]:
+        is_palindrome = False
+        break
+
+if is_palindrome:
+    print(line, "is a palindrome")
+else:
+    print(line, "is not a palindrome")
+</code></pre>
+					</div>
+                </section>
+
+				<section>
+					<h3>Sequences: check point</h3>
+					<ul>
+						<li>Sequences are objects on which we can <strong>iterate</strong> (by using a while or a for loop)</li>
+						<li>For each element you have one iteration</li>
+						<li>At this point we have seen two types of sequences:</li>
+							<ul>
+								<li>string: sequences of characters (letters)</li>
+								<li>range object: sequences of integer (numbers)</li>
+							</ul>
+						<li>NB: sequences are containers, they contain objects</li>
+					</ul>
+				</section>
+
+                <section>
+                    <h3>Objectives</h3>
+					<ul>
+                        <li>Defining our own functions</li>
+                        <li>Using functions to have more modular programs</li>
+					</ul>
+				</section>
+
+				<section>
+                    <h3 style="margin-bottom: 0px;">Built in functions seen so far</h3>
+					<table style="width:100%">
+					  <tr>
+						<th>Input/Ouput</th>
+						<th>Conversion type:</th>
+						<th>Introspection:</th>
+					  </tr>
+					  <tr>
+						<td>input()</td>
+						<td>int()</td>
+						<td>type()</td>
+					  </tr>
+					  <tr>
+						<td>print()</td>
+						<td>float()</td>
+						<td></td>
+					  </tr>
+					</table>
+					<p>All the built in functions:
+						<a target="_blank" href="https://docs.python.org/3.6/library/functions.html">https://docs.python.org/3.6/library/functions.html</a></p>
+				</section>
+				<section>
+                    <h3>Defining our own function</h3>
+                    <p>To define a function, we use the keyword <strong>def</strong>, the name of the function, the brackets, and the colon</p>
+                    <p>Then the body of the function needs to be indented</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>def name_of_the_function():
+    # body of the function</code></pre>
+                    <p>When we define a function, we just make python see that the function exist but it is not executed</p>
+                    <iframe src="https://trinket.io/embed/python3/5639960462" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+				<section>
+                    <h3>Calling our own function</h3>
+                    <p>To call or execute or run a function, we use the name of the function AND the brackets, without the brackets, the function is not called.</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>name_of_the_function()</code></pre>
+                    <p>Notice the difference between defining and calling a function</p>
+                    <iframe src="https://trinket.io/embed/python3/8f7ebe9f2b" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+				</section>
+
+                <section>
+                    <h3>Defining and Calling Functions</h3>
+                    <p>A function is a collection of statements that are grouped together to perform an operation.</p>
+                    <img src="imgs/function_def.png" style="background:none; border:none; box-shadow:none; margin-top:0px;" />
+				</section>
+
+                <section>
+                    <h3>How a function gets called</h3>
+                    <iframe width=100% height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+max(num1,+num2%29%3A%0D%0A++++%23+Return+the+max+between+two+numbers+%0D%0A++++if+num1+%3E+num2%3A%0D%0A++++++++result+%3D+num1%0D%0A++++else%3A%0D%0A++++++++result+%3D+num2%0D%0A%0D%0A++++return+result%0D%0A%0D%0Adef+main(%29%3A%0D%0A++++i+%3D+5%0D%0A++++j+%3D+2%0D%0A++++k+%3D+max(i,+j%29+%23+Call+the+max+function%0D%0A++++print(%22The+maximum+between%22,+i,+%22and%22,+j,+%22is%22,+k%29%0D%0A%0D%0Amain(%29+%23+Call+the+main+function%0D%0A&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+                </section>
+
+                <section>
+                    <h3>Functions With/Without Return Values</h3>
+                    <ul>
+                        <li>A function with the <strong>return</strong> keyword explicitly return a <strong>value</strong>. For example the function max() in the previous program.</li>
+                        <li>A function <strong>does something</strong> but does not return a value. For example the function main() in the previous program.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Example of a function that does something without returning a value</h3>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def printGrade(score):
+    # Print grade for the score
+    if score >= 90.0:
+        print('A')
+    elif score >= 80.0:
+        print('B')
+    elif score >= 70.0:
+        print('C')
+    elif score >= 60.0:
+        print('D')
+    else:
+        print('F')
+
+def main():
+    score = eval(input("Enter a score: "))
+    print("The grade is ", end = "")
+    printGrade(score)
+
+main() # Call the main function</code></pre>
+                </section>
+
+                <section>
+                    <h3>Example of a function that returns a value</h3>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def getGrade(score):
+    # Return the grade for the score
+    if score >= 90.0:
+        return 'A'
+    elif score >= 80.0:
+        return 'B'
+    elif score >= 70.0:
+        return 'C'
+    elif score >= 60.0:
+        return 'D'
+    else:
+        return 'F'
+
+def main():
+    score = eval(input("Enter a score: "))
+    print("The grade is", getGrade(score))
+
+main() # Call the main function
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>The None Value</h3>
+                    <p>A function that does not return a value is known as a void function.  In Python, such function returns a special None.</p>
+                    <iframe src="https://trinket.io/embed/python3/453540a05f" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Passing Arguments by Positions</h3>
+                    <p>Suppose you have the following function:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def nPrintln(message, n):
+    for i in range(0, n):
+        print(message)</code></pre>
+                    <p>What is the ouput of <strong>nPrintln("Welcome to Python", 5)</strong>?</p>
+                    <p>What is the ouput of <strong>nPrintln(15, "Computer Science")</strong>?</p>
+                    <p>What is wrong? How to fix?</p>
+                </section>
+
+                <section>
+                    <h3>Keyword Arguments</h3>
+                    <p>With the same function:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def nPrintln(message, n):
+    for i in range(0, n):
+        print(message)</code></pre>
+                    <p>What is the ouput of <strong>nPrintln(message="Welcome to Python", n=5)</strong></p>
+                    <p>What is the ouput of <strong>nPrintln(n = 4, message = "Computer Science")</strong></p>
+                    <p>What is wrong? How to fix?</p>
+                </section>
+
+                <section>
+                    <h3>Pass by Value</h3>
+                    <p>In Python, all data are objects. A variable for an object is actually a reference to
+the object. When you invoke a function with a parameter, the reference value of
+the argument is passed to the parameter. This is referred to as pass-by-value. For
+simplicity, we say that the value of an argument is passed to a parameter when
+invoking a function. Precisely, the value is actually a reference value to the object.</p>
+                    <p>If the argument is a number or a string, the argument is not affected, regardless of
+the changes made to the parameter inside the function.</p>
+                </section>
+
+                <section>
+                    <h3>Example</h3>
+                    <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+main(%29%3A%0D%0A++++x+%3D+1%0D%0A++++print(%22Before+the+call,+x+is%22,+x%29%0D%0A++++increment(x%29%0D%0A++++print(%22After+the+call,+x+is%22,+x%29%0D%0A%0D%0Adef+increment(n%29%3A+%0D%0A++++n+%2B%3D+1%0D%0A++++print(%22n+inside+the+function+is%22,+n%29%0D%0A%0D%0Amain(%29+%23+Call+the+main+function&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+                </section>
+
+                <section>
+                    <h3>Modularizing Code</h3>
+                    <p>Functions can be used to reduce redundant coding and enable code reuse. Functions can also be used to modularize code and improve the quality of the program.</p>
+                    <p>Example, download the following files and put them in the current Pycharm project (right click and save as): </p>
+                    <ul>
+                        <li><a href="exercises/GCDFunction.py">GCDFunction.py</a></li>
+                        <li><a href="exercises/TestGCDFunction.py">TestGCDFunction.py</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Exercise: Use the isPrime Function</h3>
+                    <p>The program <a href="exercises/PrimeNumberFunction.py">PrimeNumberFunction.py</a> (right click and save as) provides the isPrime(number) function for testing whether a number is prime.</p>
+                    <p>Use this function to find the number of prime numbers less than 10,000.</p>
+                    <ul>
+                        <li>Reuse the function in the same file</li>
+                        <li>Import the function in an other file</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <p>Using the function in the same file</p>
+                    <div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Solution</p>
+						<p class="hide-solution" style="margin-top: 0px; margin-bottom: 0px;"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+						<pre class="solution-content python"><code data-trim data-noescape>def main():
+    count = 0
+    N = 10000
+    for number in range(2, N):
+        if isPrime(number):
+            count += 1
+    print("The number of prime number <", 10000, "is", count)
+
+# Check whether number is prime
+def isPrime(number):
+    for divisor in range(2, number // 2 + 1):
+        if number % divisor == 0: # If true, number is not prime
+            return False # number is not a prime
+    return True # number is prime
+
+main()</code></pre></div>
+                </section>
+
+                <section>
+                    <p>Import the function from an other file</p>
+                    <div class="solution">
+						<p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Solution</p>
+						<p class="hide-solution" style="margin-top: 0px; margin-bottom: 0px;"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+						<pre class="solution-content python"><code data-trim data-noescape>from PrimeNumberFunction import isPrime
+
+def main():
+    count = 0
+    N = 10000
+    for number in range(2, N):
+        if isPrime(number):
+            count += 1
+
+    print("The number of prime number <", 10000, "is", count)
+
+main()
+</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Scope of Variables</h3>
+                    <p>Scope: the part of the program where the variable can be referenced.</p>
+                    <p>A variable created inside a function is referred to as a <strong>local variable</strong>. Local variables can only be accessed inside a function. The scope of a local variable starts from its creation and continues to the end of the function that contains the variable.</p>
+                    <p>In Python, you can also use <strong>global variables</strong>. They are created outside all functions and are accessible to all functions in their scope.</p>
+                </section>
+
+                <section>
+                    <h3>Example 1</h3>
+                    <iframe src="https://trinket.io/embed/python3/7ba726683e" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 2</h3>
+                    <iframe src="https://trinket.io/embed/python3/4719a9bdd9" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 3</h3>
+                    <iframe src="https://trinket.io/embed/python3/89a29f72a1" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 4</h3>
+                    <iframe src="https://trinket.io/embed/python3/96f45830fe" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 5</h3>
+                    <iframe src="https://trinket.io/embed/python3/a1f7b3d129" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Default Arguments</h3>
+                    <p>Python allows you to define functions with default argument values. The default values are passed to the parameters when a function is invoked without the arguments.</p>
+                    <iframe src="https://trinket.io/embed/python3/a5890b9bff" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/skulpt.min.js' },
+					{ src: 'plugin/skulpt-stdlib.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
