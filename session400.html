@@ -35,18 +35,29 @@
 
 				<section data-markdown>
 ### Objectives of Session 4
-* Remainder of Session 3: Quiz + exercises
-* Controlling the flow of our programs
-  * Functions
-  * Modularity
+* Remainder of Session 3: Quiz
+* Getting to know Pycharm
+* Functions
+* Scope of variables
+* Modularity
+				</section>
 
+				<section data-markdown>
+### Remainder of Session 3: Quiz (1)
+
+* What is the difference between the keywords *break* and *continue*?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 3: Quiz (2)
+
+* What is the difference between range(10), range(0, 10), and range(0, 10, 1) in a for loop?
 				</section>
 
                 <section>
-                    <h3>Objectives</h3>
+                    <h3>Pycharm</h3>
 					<ul>
-                        <li>Defining our own functions</li>
-                        <li>Using functions to have more modular programs</li>
+                        <li>To execute python scripts from Pycharm, you need to define an interpreter: File/Settings/Project/Project Interpreter</li>
 					</ul>
 				</section>
 
@@ -166,8 +177,8 @@ main() # Call the main function
                     <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def nPrintln(message, n):
     for i in range(0, n):
         print(message)</code></pre>
-                    <p>What is the ouput of <strong>nPrintln("Welcome to Python", 5)</strong>?</p>
-                    <p>What is the ouput of <strong>nPrintln(15, "Computer Science")</strong>?</p>
+                    <p>What is the output of <strong>nPrintln("Welcome to Python", 5)</strong>?</p>
+                    <p>What is the output of <strong>nPrintln(15, "Computer Science")</strong>?</p>
                     <p>What is wrong? How to fix?</p>
                 </section>
 
@@ -177,30 +188,57 @@ main() # Call the main function
                     <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%;font-size: 24px;margin-top: 0px; margin-bottom: 0px;">def nPrintln(message, n):
     for i in range(0, n):
         print(message)</code></pre>
-                    <p>What is the ouput of <strong>nPrintln(message="Welcome to Python", n=5)</strong></p>
-                    <p>What is the ouput of <strong>nPrintln(n = 4, message = "Computer Science")</strong></p>
+                    <p>What is the output of <strong>nPrintln(message="Welcome to Python", n=5)</strong></p>
+                    <p>What is the output of <strong>nPrintln(n = 4, message = "Computer Science")</strong></p>
                     <p>What is wrong? How to fix?</p>
                 </section>
 
                 <section>
-                    <h3>Pass by Value</h3>
-                    <p>In Python, all data are objects. A variable for an object is actually a reference to
-the object. When you invoke a function with a parameter, the reference value of
-the argument is passed to the parameter. This is referred to as pass-by-value. For
-simplicity, we say that the value of an argument is passed to a parameter when
-invoking a function. Precisely, the value is actually a reference value to the object.</p>
-                    <p>If the argument is a number or a string, the argument is not affected, regardless of
-the changes made to the parameter inside the function.</p>
+                    <h3>Default Arguments</h3>
+                    <p>Python allows you to define functions with default argument values. The default values are passed to the parameters when a function is invoked without the arguments.</p>
+                    <iframe src="https://trinket.io/embed/python3/a5890b9bff" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
-                    <h3>Example</h3>
-                    <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def+main(%29%3A%0D%0A++++x+%3D+1%0D%0A++++print(%22Before+the+call,+x+is%22,+x%29%0D%0A++++increment(x%29%0D%0A++++print(%22After+the+call,+x+is%22,+x%29%0D%0A%0D%0Adef+increment(n%29%3A+%0D%0A++++n+%2B%3D+1%0D%0A++++print(%22n+inside+the+function+is%22,+n%29%0D%0A%0D%0Amain(%29+%23+Call+the+main+function&origin=opt-frontend.js&cumulative=false&heapPrimitives=false&textReferences=false&py=3&rawInputLstJSON=%5B%5D&curInstr=0&codeDivWidth=350&codeDivHeight=400"> </iframe>
+                    <h3>Modularizing Code (1)</h3>
+                    <p>We can make use of existing builtin modules/libraries</p>
+                    <p>For example, you can use the *random* library</p>
+                    <p>To get the list of all available modules, checkout the *help()* interactive function</p>
                 </section>
 
+				<section>
+                    <h3>Exercise: Guess Number</h3>
+					<p>Make a program to ask the user to guess the number that has been randomly generated.</p>
+					<p>Start from this file: <a href="exercises/GuessNumber.py">GuessNumber.py</a> (right click and save as)</p>
+					<ul>
+						<li>The user will be able to try continuously until he finds the correct number.</li>
+						<li>The program will stop as soon as the number is found, i.e. as soon as the random number matches the entered number</li>
+						<li>At each iteration, i.e. each time the user tries a number and presses enter, the program will say if the number is too high, too low or correct</li>
+					</ul>
+				</section>
+				<section>
+                    <h3>Solution: Guess Number</h3>
+					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>import random
+
+# Generate a random number to be guessed
+number = random.randint(1, 100)
+print("Guess a magic number between 0 and 100")
+guess = -1
+while guess != number:
+    guess = int(input("Enter your guess: "))
+    if guess == number:
+        print("Yes, the number is", number)
+    elif guess > number:
+        print("Your guess is too high")
+    else:
+        print("Your guess is too low")
+</code></pre></div>
+				</section>
+
                 <section>
-                    <h3>Modularizing Code</h3>
+                    <h3>Modularizing Code (2)</h3>
                     <p>Functions can be used to reduce redundant coding and enable code reuse. Functions can also be used to modularize code and improve the quality of the program.</p>
+                    <p>A python file is called a module, you can import a module</p>
                     <p>Example, download the following files and put them in the same directory (right click and save as): </p>
                     <ul>
                         <li><a href="exercises/GCDFunction.py">GCDFunction.py</a></li>
@@ -262,6 +300,18 @@ main()
                 </section>
 
                 <section>
+                    <h3>Documentation Strings (Docstring)</h3>
+                    <pre><code data-trim data-noescape>def my_function():
+    """Do nothing, but document it.
+    No, really, it doesn't do anything.
+    """
+    pass
+
+help(my_function)
+</code></pre>
+                </section>
+
+                <section>
                     <h3>Scope of Variables</h3>
                     <p>Scope: the part of the program where the variable can be referenced.</p>
                     <p>A variable created inside a function is referred to as a <strong>local variable</strong>. Local variables can only be accessed inside a function. The scope of a local variable starts from its creation and continues to the end of the function that contains the variable.</p>
@@ -291,12 +341,6 @@ main()
                 <section>
                     <h3>Example 5</h3>
                     <iframe src="https://trinket.io/embed/python3/a1f7b3d129" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-                </section>
-
-                <section>
-                    <h3>Default Arguments</h3>
-                    <p>Python allows you to define functions with default argument values. The default values are passed to the parameters when a function is invoked without the arguments.</p>
-                    <iframe src="https://trinket.io/embed/python3/a5890b9bff" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
 			</div>
