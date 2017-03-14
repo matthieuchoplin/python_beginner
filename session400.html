@@ -218,21 +218,28 @@ main() # Call the main function
 				</section>
 				<section>
                     <h3>Solution: Guess Number</h3>
-					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>import random
+                    <div class="solution">
+                        <p class="show-solution"><i class="fa fa-eye" aria-hidden="true"></i>Show solution</p>
+                        <p class="hide-solution"><i class="fa fa-eye-slash" aria-hidden="true"></i>Hide solution</p>
+                        <pre class="solution-content python"><code>import random
 
 # Generate a random number to be guessed
 number = random.randint(1, 100)
-print("Guess a magic number between 0 and 100")
-guess = -1
-while guess != number:
-    guess = int(input("Enter your guess: "))
-    if guess == number:
-        print("Yes, the number is", number)
-    elif guess > number:
-        print("Your guess is too high")
-    else:
-        print("Your guess is too low")
-</code></pre></div>
+
+def guess_number():
+    print("Guess a magic number between 0 and 100")
+    guess = -1
+    while guess != number:
+        guess = int(input("Enter your guess: "))
+        if guess == number:
+            print("Yes, the number is", number)
+        elif guess > number:
+            print("Your guess is too high")
+        else:
+            print("Your guess is too low")
+guess_number()
+                        </code></pre>
+                </div>
 				</section>
 
                 <section>
