@@ -38,8 +38,9 @@
 * Remainder of Session 3: Quiz
 * Getting to know Pycharm
 * Functions
-* Scope of variables
 * Modularity
+* Debugging using the pdb library
+* Scope of variables
 				</section>
 
 				<section data-markdown>
@@ -304,6 +305,54 @@ def main():
 
 main()
 </code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Using a check to avoid executing the script when we import it</h3>
+                    <pre><code data-trim data-noescape>def bla():
+    print('bla')
+
+if __name__ == '__main__':
+    bla()
+</code></pre>
+                    <p>This is checking if the file is executed directly or if it imported</p>
+                    <p>Download these 2 files: <a href="exercises/ex.py">ex.py</a> and <a href="exercises/some_lib.py">some_lib.py</a>(right click and save as) and place them in the same directory</p>
+                </section>
+
+				<section>
+					<h3>Debugging</h3>
+					<ul>
+						<li>What is the program supposed to do?</li>
+						<li>Is it doing what it is expected to do?</li>
+						<li>Why not? Investigate...</li>
+					</ul>
+				</section>
+                <section>
+                    <h3>2 ways of debugging</h3>
+                    <ul>
+                        <li>Naive debugging</li>
+						<ul>
+							<li>Use the <strong>print()</strong> function, sometimes it is enough</li>
+						</ul>
+						<li>Smarter debugging</li>
+						<ul>
+							<li>Use a debugger, i.e. <strong>pdb</strong> and insert a <strong>breakpoint</strong></li>
+							<li>A breakpoint is an intentional stopping or pausing place in a program. It is also sometimes simply referred to as a pause.</li>
+							<li>You set it by writing the following within your program</li>
+							<div><pre class="solution-content python"><code>import pdb; pdb.set_trace()</code></pre></div>
+						</ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Commands for using pdb</h3>
+                    <ul style="line-height: 100%;">
+                        <li>list (<strong>l</strong>) List 11 lines around the current line (five before and five after). Using list with a single numerical argument lists 11 lines around that line instead of the current line.</li>
+                        <li>next (<strong>n</strong>) Execute the next line in the file. This allows you to go line by line and inspect the state of the code at that point.</li>
+                        <li>continue (<strong>c</strong>) Exit out of the debugger but still execute the code.</li>
+						<li>step into (<strong>s</strong>) to go into the execution call of an other function</li>
+                    </ul>
+					<p>To go further: <a href="https://pymotw.com/3/pdb/">https://pymotw.com/3/pdb/</a> </p>
                 </section>
 
                 <section>
