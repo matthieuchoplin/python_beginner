@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 5</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+	<a href="index.html">Home</a>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+                    ## Introduction to programming using Python
+                    ### Session 5
+					 18:30 - 19:30
+				</section>
+
+				<section data-markdown>
+### Objectives of Session 5
+* Function Scopes
+* Objects and Methods
+* Class creation
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 4: Quiz (1)
+
+* What is the keyword that we need to use if we want to use a function defined in an other file than our current file?
+				</section>
+
+				<section data-markdown>
+### Remainder of Session 4: Quiz (2)
+
+* What is a module in python?
+				</section>
+
+                <section>
+                    <h3>Scope of Variables</h3>
+                    <p>Scope: the part of the program where the variable can be referenced.</p>
+                    <p>A variable created inside a function is referred to as a <strong>local variable</strong>. Local variables can only be accessed inside a function. The scope of a local variable starts from its creation and continues to the end of the function that contains the variable.</p>
+                    <p>In Python, you can also use <strong>global variables</strong>. They are created outside all functions and are accessible to all functions in their scope.</p>
+                </section>
+
+                <section>
+                    <h3>Example 1</h3>
+                    <iframe src="https://trinket.io/embed/python3/7ba726683e" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 2</h3>
+                    <iframe src="https://trinket.io/embed/python3/4719a9bdd9" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 3</h3>
+                    <iframe src="https://trinket.io/embed/python3/89a29f72a1" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 4</h3>
+                    <iframe src="https://trinket.io/embed/python3/96f45830fe" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Example 5</h3>
+                    <iframe src="https://trinket.io/embed/python3/a1f7b3d129" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                </section>
+
+                <section>
+                    <h3>Objects</h3>
+					<ul>
+                        <li>In Python, all data —including numbers and strings— are actually objects.</li>
+						<li>An object is an entity. Each object has an <strong>id</strong> and a <strong>type</strong>.</li>
+						<iframe src="https://trinket.io/embed/python3/fcdfe0e6a1?outputOnly=true&runMode=console" width="100%" height="280" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Methods</h3>
+					<ul>
+						<li>You can perform operations on an object. The operations are defined using functions. The functions for the objects are called <em>methods</em> in Python. <strong>Methods can only be invoked from  a specific object</strong>, using the dot notation</li>
+						<iframe src="https://trinket.io/embed/python3/6f80686ab7?outputOnly=true&runOption=console&start=result&runMode=console" width="100%" height="200" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Seeing what methods are available</h3>
+					<ul>
+						<li>You can use the <strong>dir()</strong> introspection function to see what methods have been defined for an object</li>
+						<iframe src="https://trinket.io/embed/python3/11daac5827?toggleCode=true&runMode=console" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The format() method</h3>
+					<ul>
+						<li>The <strong>format</strong> method helps to format the string</li>
+						<ul>
+							<li>Either with positional arguments:</li>
+						</ul>
+						<pre><code data-trim data-noescape>text = "During session {}, " \
+"we learned to use {} ".format(5, 'OOP')</code></pre>
+						<ul>
+							<li>Or with named arguments</li>
+						</ul>
+						<pre><code data-trim data-noescape>text = "During session {session_name}, " \
+"we learned to use {topic} ".format(session_name=5, topic='OOP')</code></pre>
+						<li>More information about string formating: <a href="https://pyformat.info/"> https://pyformat.info/</a></li>
+
+					</ul>
+				</section>
+
+				<section>
+					<h3>Creating our own Class</h3>
+						<p>Syntax: </p>
+						<pre><code data-trim data-noescape>class NameOfTheClass:
+    # the class body</code></pre>
+						<p>Example</p>
+						<pre><code data-trim data-noescape>class Employee:
+    pass</code></pre>
+				</section>
+
+				<section>
+					<h3>Creating instances of a class</h3>
+					<p>Instances are objects created from the class blueprint. When we create an object of a class, we say that we instantiate the object</p>
+						<p>Example:</p>
+						<pre><code data-trim data-noescape>class Employee:
+    pass
+
+employee1 = Employee()
+employee2 = Employee()
+print(type(employee1))
+print(employee1)</code></pre>
+				</section>
+
+				<section>
+					<h3>Attributes of an object</h3>
+					<ul>
+						<li>To add an attribute we can simply add an attribute with the dot notation and assign a value to the attribute</li>
+						<pre><code data-trim data-noescape>class Employee:
+    pass
+
+employee1 = Employee()
+employee1.name = "Matt"</code></pre>
+					</ul>
+				</section>
+
+				<section>
+					<h3>The special initializer method</h3>
+					<ul>
+						<li>Instead of adding the attribute after creating our object, we can create them directly when creating the object, in the initializer method</li>
+						<pre><code data-trim data-noescape># class creation
+class Employee:
+    def __init__(self, name):
+        self.name = name
+
+#object creation
+employee1 = Employee('Matt')</code></pre>
+						<li>self represents the instance/object "employee1" here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Constructing Objects</h3>
+                    <ul>
+                        <li>Once a class is defined, you can create objects from the class by using the following syntax, called a <strong>constructor</strong>:</li>
+                    </ul>
+                    <div><pre class="solution-content python"><code>my_new_object = ClassName(optional_arguments)</code></pre></div>
+                    <img src="imgs/object_self.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 300px"/>
+				</section>
+
+				<section>
+					<h3>Constructing Objects</h3>
+                    <p>The effect of constructing an Employee object with ...</p>
+                    <div><pre class="solution-content python"><code>employee1 = Employee(5)</code></pre></div>
+                    <p>... is shown below:</p>
+                    <img src="imgs/object_construct.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 300px"/>
+
+				</section>
+
+				<section>
+					<h3>Exercise: adding attribute</h3>
+					<ul>
+						<li>Complete the previous code to create a new attribute "date_of_birth" to the Employee class</li>
+						<li>Create 2 employee objects</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Instance Methods</h3>
+                    <ul>
+                        <li>Methods are <strong>functions defined inside a class</strong>. They are <strong>invoked by objects</strong> to
+perform actions on the objects.</li>
+                        <li>All the methods, including the constructor have the
+first parameter <strong>self</strong>, which refers to the object that invokes the method.</li>
+                    </ul>
+					<pre><code data-trim data-noescape>class Employee:
+    def __init__(self, name):
+        self.name = name
+    def generate_email_address(self):
+        return self.name + "@company.com"
+
+employee1 = Employee('Matt')
+# we call the method on the object
+employee1.generate_email_address()</code></pre>
+				</section>
+
+				<section>
+					<h3>Exercise: adding a method</h3>
+					<ul>
+						<li>Complete the previous code by adding an additional method (set_name) that will set a new name to the employee</li>
+						<li>You should call the method like so:</li>
+						<pre><code data-trim data-noescape>employee1.set_name("Bob")</code></pre>
+						<li>And when you retrieve the name of the employee1, it should say "Bob"</li>
+						<pre><code data-trim data-noescape>employee1.name</code></pre>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Accessing Objects</h3>
+                    <ul>
+                        <li>After an object is created, you can access its data fields and invoke its methods
+using the dot operator (.)</li>
+                    </ul>
+                    <div><pre class="solution-content python"><code># we create an employee object
+employee1 = Employee('Matt')
+# we call the method of the object using the dot notation
+employee1.generate_email_address()
+# we access one of the attribute of the object
+employee.name</code></pre></div>
+				</section>
+
+				<section>
+					<h3>UML Class Diagram</h3>
+                    <img src="imgs/uml.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 500px"/>
+				</section>
+
+				<section>
+					<h3>Trace execution</h3>
+                    <p>See what is happening in memory with <a href="http://pythontutor.com/visualize.html#code=import%20math%0A%0Aclass%20Circle%3A%0A%20%20%20%20%23%20Construct%20a%20circle%20object%0A%20%20%20%20def%20__init__%28self,%20radius%20%3D%201%29%3A%0A%20%20%20%20%20%20%20%20self.radius%20%3D%20radius%0A%0A%20%20%20%20def%20getArea%28self%29%3A%0A%20%20%20%20%20%20%20%20return%20self.radius%20*%20self.radius%20*%20math.pi%0A%20%20%20%20%20%20%20%20%0Amy_circle%20%3D%20Circle%285.0%29%0Ayour_circle%20%3D%20Circle%28%29%0Ayour_circle.radius%20%3D%20100&cumulative=false&heapPrimitives=false&mode=edit&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false" target="_blank">Pythontutor</a> (click link)</p>
+				</section>
+
+				<section>
+					<h3>Example: Defining Classes and Creating Objects</h3>
+                    <img src="imgs/example_uml.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 450px"/>
+				</section>
+
+				<section>
+					<h3>Example: Defining Classes and Creating Objects</h3>
+                    <ul>
+                        <li>See <a href="exercises/TV.py">TV.py</a> </li>
+                        <li>See <a href="exercises/TestTV.py">TestTV.py</a> </li>
+                    </ul>
+				</section>
+
+                <section>
+                    <h3>Exercise - The Rectangle class</h3>
+                    <p style="font-size: 28px">Following the example of the Circle class, design a class named Rectangle to represent a rectangle. The class contains:</p>
+                    <ul style="font-size: 28px">
+                        <li>Two data fields named width and height.</li>
+                        <li>A constructor that creates a rectangle with the specified width and height.
+The default values are 1 and 2 for the width and height, respectively.</li>
+                        <li>A method named getArea() that returns the area of this rectangle</li>
+                        <li>A method named getPerimeter() that returns the perimeter</li>
+                    </ul>
+                    <p style="font-size: 28px">Implement the class. Write a test program that
+creates two Rectangle objects—one with width 4 and height 40 and the other with width 3.5 and
+height 35.7. Display the width, height, area, and perimeter of each rectangle in this order.</p>
+                </section>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/skulpt.min.js' },
+					{ src: 'plugin/skulpt-stdlib.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
