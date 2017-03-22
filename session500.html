@@ -37,7 +37,7 @@
 ### Objectives of Session 5
 * Function Scopes
 * Objects and Methods
-* Class creation
+* Class creation and object instantiation
 				</section>
 
 				<section data-markdown>
@@ -212,6 +212,22 @@ employee1 = Employee('Matt')</code></pre>
 				</section>
 
 				<section>
+					<h3>Class attribute</h3>
+                    <ul>
+                        <li>Like Instances, Classes can also have attributes</li>
+                    </ul>
+                    <div><pre class="solution-content python"><code>class Employee:
+    count = 0
+    def __init__(self):
+        Employee.count += 1
+
+for i in range(3):
+    Employee()
+
+Employee.count</code></pre></div>
+				</section>
+
+				<section>
 					<h3>Instance Methods</h3>
                     <ul>
                         <li>Methods are <strong>functions defined inside a class</strong>. They are <strong>invoked by objects</strong> to
@@ -292,6 +308,26 @@ The default values are 1 and 2 for the width and height, respectively.</li>
 creates two Rectangle objects—one with width 4 and height 40 and the other with width 3.5 and
 height 35.7. Display the width, height, area, and perimeter of each rectangle in this order.</p>
                 </section>
+
+				<section>
+					<h3>Exercise: The Account class</h3>
+					<p style="line-height: 100%; font-size: 28px;">Design a class named Account that contains:</p>
+					<ul style="line-height: 100%; font-size: 28px;">
+						<li> A field named id for the account.</li>
+						<li> A field named balance for the account.</li>
+						<li> A field named annualInterestRate that stores the current
+						interest rate.</li>
+						<li> A constructor that creates an account with the specified id (default 0), initial
+						balance (default 100), and annual interest rate (default 0).</li>
+						<li> A method named getMonthlyInterestRate() that returns the monthly
+						interest rate.</li>
+						<li> A method named getMonthlyInterest() that returns the monthly interest.</li>
+						<li> A method named withdraw that withdraws a specified amount from the
+						account.</li>
+						<li> A method named deposit that deposits a specified amount to the account.</li>
+						<li> Create a method getBalance that will show the message: "The current balance of the account 0 is 100" (use format).</li>
+					</ul>
+				</section>
 
 
 		<script src="lib/js/head.min.js"></script>
