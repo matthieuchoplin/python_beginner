@@ -61,31 +61,38 @@
 
                 <section>
                     <h3>Example 1</h3>
+					<p>We say that the variables defined inside a function are <strong>local</strong>, they are only accessible within the function</p>
+					<p>Variable defined outside the scope of a function are <strong>global</strong>. They are accessible inside our outside the function</p>
                     <iframe src="https://trinket.io/embed/python3/7ba726683e" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
                     <h3>Example 2</h3>
+					<p>A variable can be global and local in a flow of a program, like x here</p>
+					<p>As soon as a function has finished being executed, the local variables (inside the function) are destroyed ("garbage collected"). But the global variable are still accessible.</p>
                     <iframe src="https://trinket.io/embed/python3/4719a9bdd9" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
                     <h3>Example 3</h3>
+					<p>If you are defining a variable according to a condition, watch out! It is better to give a default value.</p>
                     <iframe src="https://trinket.io/embed/python3/89a29f72a1" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
                     <h3>Example 4</h3>
+					<p>Are you using the variables you are defining?</p>
                     <iframe src="https://trinket.io/embed/python3/96f45830fe" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
                     <h3>Example 5</h3>
+					<p>You can access the value of a global variable within the local scope but to modify it, you need to use the keyword <strong>global</strong></p>
                     <iframe src="https://trinket.io/embed/python3/a1f7b3d129" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
                 </section>
 
                 <section>
-                    <h3>Objects</h3>
+                    <h3>Objects: illustration with the String object</h3>
 					<ul>
                         <li>In Python, all data —including numbers and strings— are actually objects.</li>
 						<li>An object is an entity. Each object has an <strong>id</strong> and a <strong>type</strong>.</li>
@@ -199,8 +206,8 @@ employee1 = Employee('Matt')</code></pre>
 				<section>
 					<h3>Exercise: adding attribute</h3>
 					<ul>
-						<li>Complete the previous code to create a new attribute "date_of_birth" to the Employee class</li>
-						<li>Create 2 employee objects</li>
+						<li>Complete the previous code to create a new attribute "date_of_birth" to the Employee class, that will be "initialized"</li>
+						<li>Create 2 employee objects with a name and a date_of_birth and retrieve their date of birth</li>
 					</ul>
 				</section>
 
