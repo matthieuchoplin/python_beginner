@@ -148,7 +148,10 @@ Help on built-in function append:
 append(...) method of builtins.list instance
     L.append(object) -> None -- append object to end</code></pre></div>
 				<p>Experiment in the interpreter:</p>
-				<iframe src="https://trinket.io/embed/python3/1c67a8cf6a" width="100%" height="150" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>my_list = ["foo", "bar", 124, []]
+print(my_list)
+my_list.append("abc")
+print(my_list)</code></pre></div>
 				</section>
 				<section>
 					<h3>Summary of the list methods</h3>
@@ -229,9 +232,14 @@ for element in data:
 					<h3>Iterating on a list</h3>
 					<p>The list is a <strong>sequence</strong> on which you can iterate.</p>
 					<p>With <strong>for</strong>:</p>
-					<iframe src="https://trinket.io/embed/python3/1461d22c84" width="100%" height="120" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>for element in ["foo", 11, "bar"]:
+    print(element)</code></pre></div>
 					<p>With <strong>while</strong>:</p>
-					<iframe src="https://trinket.io/embed/python3/9f18c32565" width="100%" height="160" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>my_list = ["foo", 11, "bar"]
+i=0
+while i < len(my_list):
+  print(my_list[i])
+  i+=1</code></pre></div>
 				</section>
 				<section>
 					<h3>Reminder about functions</h3>
@@ -245,12 +253,26 @@ for element in data:
 				</section>
 				<section>
 					<h3>Passing Lists to Functions</h3>
-					<iframe src="https://trinket.io/embed/python3/0e7b0b2d6f" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>def printList(lst):
+    for element in lst:
+        print(element)
+
+# Invoke the function
+lst = [3, 1, 2, 6, 4, 2]
+printList(lst)</code></pre></div>
 				</section>
 				<section>
 					<h3>Returning a List from a Function</h3>
 					<p>Example: a function that returns a reversed list</p>
-					<iframe src="https://trinket.io/embed/python3/fef0183b9c" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>def reverse(lst):
+    result = []
+    for element in lst:
+        result.insert(0, element)
+    return result
+
+list1 = [1, 2, 3, 4, 5, 6]
+list2 = reverse(list1)
+print(list2)</code></pre></div>
 					<p>The function <strong>reverse</strong> actually exists for doing the same thing</p>
 				</section>
 				<section>
@@ -339,9 +361,15 @@ first_elem = my_string_variable[0]</code></pre>
 				<section>
 					<h3>Manipulate element of a List with indexes</h3>
 					<p>You can also <strong>access</strong> element of a list with indexes <strong>BUT</strong> you can also <strong>modify</strong> them:</p>
-					<iframe src="https://trinket.io/embed/python3/1c5817ee59" width="100%" height="120" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>my_list = ["foo", 11, "bar"]
+print(my_list)
+my_list[1] = "eleven"
+print(my_list)
+</code></pre></div>
 					<p>contrary to the string type.</p>
-					<iframe src="https://trinket.io/embed/python3/d6fa9f127e" width="100%" height="120" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div><pre class="solution-content python"><code>my_string = "abracadabra"
+my_string[0] = "O"
+print(my_string)</code></pre></div>
 				</section>
 				<section>
 					<h3>Difference between mutable and immutable objects</h3>
