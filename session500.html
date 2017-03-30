@@ -63,32 +63,60 @@
                     <h3>Example 1</h3>
 					<p>We say that the variables defined inside a function are <strong>local</strong>, they are only accessible within the function</p>
 					<p>Variable defined outside the scope of a function are <strong>global</strong>. They are accessible inside our outside the function</p>
-                    <iframe src="https://trinket.io/embed/python3/7ba726683e" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<pre><code data-trim data-noescape>globalVar = 1
+def f1():
+    localVar = 2
+    print(globalVar)
+    print(localVar)
+f1()
+print(globalVar)
+print(localVar)  # Out of scope. This gives an error</code></pre>
                 </section>
 
                 <section>
                     <h3>Example 2</h3>
 					<p>A variable can be global and local in a flow of a program, like x here</p>
 					<p>As soon as a function has finished being executed, the local variables (inside the function) are destroyed ("garbage collected"). But the global variable are still accessible.</p>
-                    <iframe src="https://trinket.io/embed/python3/4719a9bdd9" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<pre><code data-trim data-noescape>x = 1
+def f1():
+    x = 2
+    print(x) # Displays 2
+f1()
+print(x) # Displays 1
+</code></pre>
                 </section>
 
                 <section>
                     <h3>Example 3</h3>
 					<p>If you are defining a variable according to a condition, watch out! It is better to give a default value.</p>
-                    <iframe src="https://trinket.io/embed/python3/89a29f72a1" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                    <pre><code data-trim data-noescape>x = int(input("Enter a number: "))
+if (x > 0):
+    y = 4
+print(y) # This gives an error if y is not created
+</code></pre>
                 </section>
 
                 <section>
                     <h3>Example 4</h3>
 					<p>Are you using the variables you are defining?</p>
-                    <iframe src="https://trinket.io/embed/python3/96f45830fe" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<pre><code data-trim data-noescape>sum = 0
+for i in range(0, 5):
+    sum += i
+print(i)
+</code></pre>
                 </section>
 
                 <section>
                     <h3>Example 5</h3>
 					<p>You can access the value of a global variable within the local scope but to modify it, you need to use the keyword <strong>global</strong></p>
-                    <iframe src="https://trinket.io/embed/python3/a1f7b3d129" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<pre><code data-trim data-noescape>x = 1
+def increase():
+    global x
+    x =  x + 1
+    print(x) # Displays 2
+increase()
+print(x) # Displays 2
+</code></pre>
                 </section>
 
                 <section>
@@ -96,7 +124,21 @@
 					<ul>
                         <li>In Python, all data —including numbers and strings— are actually objects.</li>
 						<li>An object is an entity. Each object has an <strong>id</strong> and a <strong>type</strong>.</li>
-						<iframe src="https://trinket.io/embed/python3/fcdfe0e6a1?outputOnly=true&runMode=console" width="100%" height="280" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+						<pre style="line-height: 100%; font-size: 24px;"><code data-trim data-noescape>&gt;&gt;&gt; n = 3  # n is an integer
+&gt;&gt;&gt; id(n)
+10914432
+&gt;&gt;&gt; type(n)
+&lt;class &#39;int&#39;&gt;
+&gt;&gt;&gt; f = 3.0  # f is a float
+&gt;&gt;&gt; id(f)
+139757347082840
+&gt;&gt;&gt; type(f)
+&lt;class &#39;float&#39;&gt;
+&gt;&gt;&gt; s = "Welcome"  # s is a string
+&gt;&gt;&gt; id(s)
+139757323539824
+&gt;&gt;&gt; type(s)
+&lt;class &#39;str&#39;&gt;</code></pre>
 					</ul>
 				</section>
 
@@ -104,7 +146,14 @@
 					<h3>Methods</h3>
 					<ul>
 						<li>You can perform operations on an object. The operations are defined using functions. The functions for the objects are called <em>methods</em> in Python. <strong>Methods can only be invoked from  a specific object</strong>, using the dot notation</li>
-						<iframe src="https://trinket.io/embed/python3/6f80686ab7?outputOnly=true&runOption=console&start=result&runMode=console" width="100%" height="200" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+						<pre><code data-trim data-noescape>&gt;&gt;&gt; s = "Welcome"
+&gt;&gt;&gt; s1 = s.lower()
+&gt;&gt;&gt; s1
+&#39;welcome&#39;
+&gt;&gt;&gt; s2 = s.upper()
+&gt;&gt;&gt; s2
+&#39;WELCOME&#39;
+&gt;&gt;&gt; </code></pre>
 					</ul>
 				</section>
 
@@ -112,7 +161,21 @@
 					<h3>Seeing what methods are available</h3>
 					<ul>
 						<li>You can use the <strong>dir()</strong> introspection function to see what methods have been defined for an object</li>
-						<iframe src="https://trinket.io/embed/python3/11daac5827?toggleCode=true&runMode=console" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+						<pre  style="line-height: 100%; font-size: 24px;"><code data-trim data-noescape>&gt;&gt;&gt; dir("example of string")
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__',
+'__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+'__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__',
+'__iter__', '__le__', '__len__', '__lt__', '__mod__', '__mul__',
+'__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__',
+'__subclasshook__', 'capitalize', 'casefold', 'center', 'count',
+'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map',
+'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier',
+'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle', 'isupper',
+'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition', 'replace',
+'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split',
+'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate',
+'upper', 'zfill']</code></pre>
 					</ul>
 				</section>
 

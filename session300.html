@@ -229,16 +229,37 @@ while counter < 5:
 				<section>
                     <h3>The keyword break</h3>
 					<p>Instead of a condition, you can also use the keyword <strong>break</strong> to end the iteration of a loop.</p>
-					<iframe src="https://trinket.io/embed/python3/704e3a69e0" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>while True:
+    print('Please type your name.')
+    name = input()
+    if name == 'your name':
+        break
+print('Thank you!')</code></pre></div>
 				</section>
 				<section>
                     <h3>The keyword continue</h3>
 					<p>You can use the keyword <strong>continue</strong> to ignore the remaining code in the iteration and jump to the next iteration</p>
-					<iframe src="https://trinket.io/embed/python3/877b4a74e6" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>sum = 0
+number = 0
+while number < 3:
+    number += 1
+    if (number ==2):
+        continue
+    sum += number
+print("The sum is ", sum)</code></pre></div>
 				</section>
 				<section>
                     <h3>Combining break and continue</h3>
-					<iframe src="https://trinket.io/embed/python3/266671ebc7" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div ><pre style="margin-bottom: 0px; font-size: 22px;"><code>while True:
+  print('Who are you?')
+  name = input()
+  if name != 'Joe':
+    continue
+  print('Hello, Joe. What is the password? (It is a fish.)')
+  password = input()
+  if password == 'swordfish':
+    break
+print('Access granted.')</code></pre></div>
 				</section>
 				<section>
                     <h3>Exercise: quit the program with <strong>Q</strong></h3>
@@ -306,7 +327,9 @@ You didn't enter any number</pre>
                     <h3>Example: a string is a sequence</h3>
 					<p>A string is a sequence of characters on which we can iterate.</p>
 					<p>The value of <strong>element</strong> is going to be the value of each character of the string (each letter of the word) successively</p>
-					<iframe src="https://trinket.io/embed/python3/26f1b1fc9f" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div ><pre class="solution-content python"><code>for element in ('matt'):
+  if element not in 'aeiou'):
+    print(element)</code></pre></div>
 				</section>
 				<section>
                     <h3>The function range</h3>
@@ -323,12 +346,14 @@ You didn't enter any number</pre>
 				<section>
                     <h3>Example: range(initialValue, endValue)</h3>
 					<p>Notice how the endValue is excluded</p>
-					<iframe src="https://trinket.io/embed/python3/8c9818da3a" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div ><pre class="solution-content python"><code>for v in range(4, 8):
+  print(v)</code></pre></div>
 				</section>
 				<section>
                     <h3>Example: range(initialValue, endValue, step)</h3>
 					<p>Step specifies the increment</p>
-					<iframe src="https://trinket.io/embed/python3/3e819818a0" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+					<div ><pre class="solution-content python"><code>for v in range(3, 9, 2):
+  print(v)</code></pre></div>
 				</section>
 				<section>
                     <h3>Exercise: conversion from miles to kilometers</h3>
