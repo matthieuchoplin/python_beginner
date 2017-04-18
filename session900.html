@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 9</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Introduction to programming using Python</h2>
+					<h3>Session 9</h3>
+                    <p>Matthieu Choplin</p>
+                    <p><a href='http://pythonguy.com/'>http://pythonguy.com/</a></p>
+				</section>
+				<section>
+					<h3>Objectives: recap</h3>
+					<ul>
+						<li>Quiz</li>
+						<li>Exercises</li>
+					</ul>
+				</section>
+
+                <section>
+                    <h3>Q1</h3>
+                    <p>What is a variable in your words?</p>
+                </section>
+
+                <section>
+                    <h3>Q2</h3>
+                    <p>What are the variables in that script?</p>
+                    <pre><code>print('Hello world')
+students = ['Jack', 'Adam', 'Brad']
+for s in students:
+    print('Hello', s)</code></pre>
+                </section>
+
+                <section>
+                    <h3>Modulo operator %</h3>
+                    <pre><code># first block
+if number % 2 == 0:
+    # mind the indentation!
+    print('The number is even')
+# 2nd block
+else:
+    # an other block (indented!)
+    print('The numver is odd')</code></pre>
+                </section>
+
+                <section>
+                    <h3>Range</h3>
+                    <p>Is producing a sequence of integers (whole numbers) on which we can iterate</p>
+                    <pre><code>>>> print(range(5))
+range(0, 5)
+>>> print(list(range(5)))
+[0, 1, 2, 3, 4]
+>>> for i in range(3):
+...     print(i)
+...
+0
+1
+2</code></pre>
+                </section>
+
+                <section>
+                    <h3>EX3: reminder of %, conditional statements and range combined</h3>
+                    <p>Given an integer, <em>n</em>, perform the following conditional actions:</p>
+                    <ul>
+                        <li>If <em>n</em> is odd, print Weird</li>
+                        <li>If <em>n</em> is even and in the inclusive range of 2 to 5, print Not <em>Weird</em></li>
+                        <li>If <em>n</em> is even and in the inclusive range of 6 to 20, print <em>Weird</em></li>
+                        <li>If <em>n</em> is even and greater than 20, print <em>Not Weird</em></li>
+                    </ul>
+                    <pre><code>n = int(input())</code></pre>
+                </section>
+
+                <section>
+                    <h3>Q3: Loops</h3>
+                    <p>What are the 2 ways of creating loops in python?</p>
+                </section>
+
+                <section>
+                    <h3>Q4</h3>
+                    <p>How would you make this code more concise (1)? And more flexible if for example the program can take any number of sales (2)? Think DRY!</p>
+                    <pre><code>sale_1 = int(input('Enter sale price 1: '))
+sale_2 = int(input('Enter sale price 2: '))
+sale_3 = int(input('sale price 3: '))
+print('The average sale was ', (sale_1 + sale_2 + sale_3) / 3)
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>Q5: functions</h3>
+                    <p>Is the program calling the function here?</p>
+                    <pre><code>def hello():
+    print('Hello')
+
+a = hello</code></pre>
+                    <p>Think YAGNI!</p>
+                </section>
+
+                <section>
+                    <h3>EX5: writing functions (1)</h3>
+                    <p>You are given the year, and you have to write a function to check if the year is leap or not.</p>
+                    <pre><code>def is_leap(year):
+    leap = False
+    # Write your logic here: year divisible by 400 or year NOT divisible by 100 and divisible by 4
+    return leap
+
+year = int(input())
+print(is_leap(year))</code></pre>
+<p>Can you find on google which python builtin module you could use to say if a year is a leap year?</p>
+                </section>
+
+                <section>
+                    <h3>EX6: writing functions (2)</h3>
+                    <p>The program reads a letter of the alphabet from the user. If the user enters a, e, i, o or u then your program should display a message indicating that the entered letter is a vowel.</p>
+                    <p>Define a function and call it when the program is run</p>
+                    <pre><code>letter = input('Enter a letter')
+# your code</code></pre>
+                </section>
+
+                <section>
+                    <h3>Q7: libraries and modules</h3>
+                    <p>What is a python module?</p>
+                    <p>What do we have to do before being able to use a library or a python module?</p>
+                </section>
+
+                <section>
+                    <h3>EX7: more functions (3)</h3>
+                    <p>Ask a user to enter 1 if he wants to flip a coin or 2 if he wants to roll a dice and print the number obtained or 'tail' or 'face'</p>
+                    <p>Create one function for each choice. Use the random library (use the keyword import)</p>
+                    <pre><code># import libraries at the top of the program
+# write your functions here
+choice = int(input('Enter 1 to flip a coin or 2 to roll a dice'))
+if choice == 1:
+    pass  # replace with your code
+else:
+    pass  #replace with your code
+</code></pre>
+                </section>
+
+                <section>
+                    <h3>Class and Type</h3>
+                    <p>What are the simple builtin class in python?</p>
+                    <p>What are the container types?</p>
+                </section>
+
+                <section>
+                    <h3>Object</h3>
+                    <p>What is an object in your own words?</p>
+                    <p>How would you create a string object?</p>
+                    <p>How would you create a list object?</p>
+                    <p>How would you create a custom object?</p>
+                </section>
+
+                <section>
+                    <h3>EX8: creating classroom object</h3>
+                    <p>Create 3 classrooms objects that have each a name, a schedule and a building.</p>
+                </section>
+
+                <section>
+                    <h3>Comparing list with dictionaries</h3>
+                    <p>How do you add element to a list?</p>
+                    <p>How do you add element to a dictionary?</p>
+                </section>
+
+                <section>
+                    <h3>EX9: finding the 2nd largest item of a list</h3>
+                    <p>Suppose you have the following as input:</p>
+                    <pre>4 7 9 1 3 2 5</pre>
+                    <p>Write a program that gives the 2nd largest item: </p>
+                    <p>Hint: input is returning a string, to transform a string to a list, use split()</p>
+                    <p>Define and call a function</p>
+                </section>
+
+                <section>
+                    <h3>Ex10: dictionary and json</h3>
+                    <p>Create a currency converter using the http://api.fixer.io/latest api</p>
+                    <p>Install the <em><a href="http://docs.python-requests.org/en/master/">requests</a></em> library</p>
+                    <pre><code>import json
+import requests
+r = requests.get('http://api.fixer.io/latest')
+d = json.loads(r.content)
+# your code here:</code></pre>
+                </section>
+
+                <section>
+                    <h3>Websites and apps to practice</h3>
+                    <ul>
+                        <li><a href="https://www.hackerrank.com/dashboard">https://www.hackerrank.com/dashboard</a></li>
+                        <li><a href="https://projecteuler.net/">https://projecteuler.net/</a></li>
+                        <li><a href="https://www.sololearn.com/Course/Python/">https://www.sololearn.com/Course/Python/</a></li>
+                    </ul>
+                </section>
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
