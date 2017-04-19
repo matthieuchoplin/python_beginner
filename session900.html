@@ -181,8 +181,8 @@ else:
 
                 <section>
                     <h3>Comparing list with dictionaries</h3>
-                    <p>How do you add element to a list?</p>
-                    <p>How do you add element to a dictionary?</p>
+                    <p>How do you add/access element to a list?</p>
+                    <p>How do you add/access element to a dictionary?</p>
                 </section>
 
                 <section>
@@ -203,6 +203,20 @@ import requests
 r = requests.get('http://api.fixer.io/latest')
 d = json.loads(r.content)
 # your code here:</code></pre>
+                </section>
+
+                <section>
+                    <h3>Ex11: file writing</h3>
+                    <p>Using the <a href="https://restcountries.eu/#api-endpoints-all">restcountries.eu api</a>, create <a href="exercises/list_of_countries.py">the file</a> that was used in <a href="http://mattchoplin.com/python_beginner/session700.html#/16">the exercise of the session 7</a> (guess capital)</p>
+                    <p>Use the deserialize data from the api and write them in a file called 'countries'.</p>
+                    <p>Instead of using urllib, can you rewrite the program using the requests library?</p>
+                    <pre><code>import json
+from urllib import request
+
+infile = request.urlopen(
+    'https://restcountries.eu/rest/v1/all')
+content_as_python_obj = json.loads(infile.read().decode())
+# to complete: create the file</code></pre>
                 </section>
 
                 <section>
