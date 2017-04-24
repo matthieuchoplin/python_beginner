@@ -37,9 +37,117 @@
 				<section>
 					<h3>Objectives</h3>
 					<ul>
+                        <li>To handle exceptions using the try/except/finally clauses</li>
+                        <li>To raise exceptions using the raise statements</li>
+                        <li>To become familiar with Python’s built-in exception classes</li>
+                        <li>To access exception object in the handler</li>
 						<li>Introduction to Database Connection</li>
 					</ul>
 				</section>
+
+                <section>
+                    <h3>Exception Handling</h3>
+                    <p>What happens if the user enters a file or an URL that does not exist? The
+program would be aborted and raises an error. For example, if you run
+count_letter.py with an incorrect input:</p>
+                <pre class="solution-content"><code data-trim data-noescape style="line-height: 100%">c:\session6\python count_letter.py
+Enter a filename: non_existant_file.txt
+Traceback (most recent call last):
+  File "path_to/count_letter.py", line 18, in  &lt;module&gt;
+    main()
+  File "path_to/count_letter.py", line 7, in main
+    f = open(filename)
+FileNotFoundError: [Errno 2]
+No such file or directory: 'non_existant_file.txt'
+
+Process finished with exit code 1</code></pre>
+                </section>
+
+                <section>
+                    <h3>The try ... except clause</h3>
+                    <p>Catching one exception type</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>try:
+ &lt;body&gt;
+except &lt;ExceptionType&gt;:
+ &lt;handler&gt;</code></pre>
+                </section>
+
+                <section>
+                    <h3>The try ... except clause</h3>
+                    <p>Catching several exception types</p>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%">try:
+ &lt;body&gt;
+except &lt;ExceptionType&gt;:
+ &lt;handler1&gt;
+ &lt;handler1&gt;
+...
+except &lt;ExceptionTypeN&gt;:
+ &lt;handlerN&gt;
+except:
+ &lt;handlerExcept&gt;
+else:
+&lt;process_else&gt; # will be executed if not exception
+finally:
+&lt;process_finally&gt; # executed with or without exception</code></pre>
+                </section>
+
+                <section>
+                    <h3>Example</h3>
+                    <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%">def main():
+    try:
+        number1, number2 = int(
+          input("Enter two integers,"
+                "separated by a comma: "))
+        result = number1 / number2
+        print("Result is " + str(result))
+    except ZeroDivisionError:
+        print("Division by zero!")
+    except SyntaxError:
+        print("A comma may be missing in the input")
+    except:
+        print("Something wrong in the input")
+    else:
+        print("No exceptions")
+    finally:
+        print("The finally clause is executed")
+main()</code></pre>
+                </section>
+
+                <section>
+                    <h3>Raising Exceptions</h3>
+                    <p>You learned how to write the code to handle exceptions in the preceding
+section. Where does an exception come from? How is an exception created?
+Exceptions are objects and objects are created from classes. An exception is
+raised from a function. When a function detects an error, it can create an
+object of an appropriate exception class and raise the object, using the
+following syntax:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>raise ExceptionClass("Something is wrong")</code></pre>
+                </section>
+
+                <section>
+                    <h3>Processing Exceptions Using Exception Objects</h3>
+                    <p>You can access the exception object in the except clause with the <strong>as</strong> keyword.</p>
+                 <pre class="solution-content python"><code data-trim data-noescape>try:
+    number = int(input("Enter a number: "))
+    print("The number entered is", number)
+except NameError as ex:
+    print("Exception:", ex)</code></pre>
+
+                </section>
+
+                <section>
+                    <h3>Using the with statement</h3>
+                    <p>It is good practice to use the <strong>with</strong> keyword when dealing with file objects. This
+has the advantage that the file is properly closed after its suite finishes, even if
+an exception is raised on the way. It is also much shorter than writing
+equivalent try-finally blocks:</p>
+                    <pre class="solution-content python"><code data-trim data-noescape>with open('Python_projects.txt', 'r') as f:
+    read_data = f.read()
+
+assert f.closed
+</code></pre>
+                </section>
+
 
 				<section>
 					<h3>Introduction to SQL Database Connection (1)</h3>
