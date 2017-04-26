@@ -124,6 +124,14 @@ following syntax:</p>
                     <pre class="solution-content python"><code data-trim data-noescape>raise ExceptionClass("Something is wrong")</code></pre>
                 </section>
 
+				<section>
+					<h3>Creating our own Exception</h3>
+					<pre class="solution-content python"><code data-trim data-noescape>class ExceptionClass(Exception):
+    pass
+
+raise ExceptionClass('Something is wrong')</code></pre>
+				</section>
+
                 <section>
                     <h3>Processing Exceptions Using Exception Objects</h3>
                     <p>You can access the exception object in the except clause with the <strong>as</strong> keyword.</p>
