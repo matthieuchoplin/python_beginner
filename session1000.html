@@ -95,9 +95,10 @@ finally:
                     <h3>Example</h3>
                     <pre class="solution-content python"><code data-trim data-noescape style="line-height: 100%">def main():
     try:
-        number1, number2 = int(
-          input("Enter two integers,"
-                "separated by a comma: "))
+        numbers = input("Enter two integers,"
+                "separated by a comma: ").split(',')
+        number1 = int(numbers[0])
+        number2 = int(numbers[1])
         result = number1 / number2
         print("Result is " + str(result))
     except ZeroDivisionError:
