@@ -283,6 +283,34 @@ where name='Matt';</code></pre>
                     <img src="imgs/img_fulljoin.gif" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 280px"/>
                 </section>
 
+                <section>
+                    <h3>SQL and python (1)</h3>
+                    <p>Connecting the dots...</p>
+                    <p>Selecting data</p>
+                    <pre><code>import sqlite3
+
+connection = sqlite3.connect("example_db")
+cursor = connection.cursor()
+cursor.execute("select * from person")
+print(cursor.fetchall())</code></pre>
+                    <p>I assume here that the example_db is at the same directory level as the python script</p>
+                </section>
+
+                <section>
+                    <h3>SQL and Python (2)</h3>
+                    <pre><code>import sqlite3
+
+name, age = 'John', 21
+with sqlite3.connect("example_db") as connection:
+    cursor = connection.cursor()
+    cursor.execute(
+        "INSERT INTO person VALUES"
+        "(?, ?, ?, ?)", (3, name, age, False))
+    cursor.execute("SELECT * FROM person")
+    rows = cursor.fetchall()
+    print(rows)</code></pre>
+                </section>
+
 			</div>
 		</div>
 		<script src="lib/js/head.min.js"></script>
