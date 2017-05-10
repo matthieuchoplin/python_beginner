@@ -1,9 +1,9 @@
 def main():
     try:
-        list_of_numbers= input("Enter two integers,"
+        numbers = input("Enter two integers,"
                 "separated by a comma: ").split(',')
-        number1 = int(list_of_numbers[0])
-        number2 = int(list_of_numbers[1])
+        number1 = int(numbers[0])
+        number2 = int(numbers[1])
         result = number1 / number2
         print("Result is " + str(result))
     except ZeroDivisionError:
