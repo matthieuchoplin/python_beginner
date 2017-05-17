@@ -1,0 +1,463 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 12</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Introduction to programming using Python</h2>
+					<h3>Session 12</h3>
+                    <p>Matthieu Choplin</p>
+                    <p><a href='http://pythonguy.com/'>http://pythonguy.com/</a></p>
+				</section>
+
+				<section>
+					<h3>Objectives</h3>
+					<ul>
+                        <li>Introduction to the web and web scraping</li>
+					</ul>
+				</section>
+
+                <section>
+                    <h3>Client Server</h3>
+                    <p>Computer talk to each other across the internet</p>
+                    <img src="imgs/client_server.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 280px"/>
+                    <p>Client requests information, the server is always listening</p>
+                </section>
+
+                <section>
+                    <h3>Protocols</h3>
+                    <p>Language of communication between computers: TCP (sure, no packet lost), UDP (for streaming), IP (to send messages to all participants), HTTP</p>
+                    <p>DNS: big online phone book that will match a domain with an IP address</p>
+                    <p>Ports: to communicate on specific port, first 10000 port are reserved. Common ports used: 8080</p>
+                    <p>Localhost: the IP address on our machine when developing, 127.0.0.1 (not on internet)</p>
+                </section>
+
+                <section>
+                    <h3>HTTP: the language of the web</h3>
+                    <p>Client tells server what they want using GET (get info) and POST (modify)</p>
+                    <img src="imgs/http_verbs.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 280px"/>
+                    <p>return status code, images, html page...</p>
+                </section>
+
+                <section>
+                    <h3>The HTML language</h3>
+                    <ul>
+                        <li>The primary language of information on the internet is the HTML</li>
+                        <li>Every webpages are written in HTML</li>
+                        <li>To see the source code of the webpage you are currently seeing,
+                            do either right click and select "View page Source".
+                            Or from the top menu of your browser, click on View and "View Source".</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Example</h3>
+                    <p><a target="_blank" href="http://mattchoplin.com/python_city/practice/Profile_Aphrodite.htm">Profile_Aphrodite.htm</a></p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">&lt;html&gt;&lt;head&gt;&lt;meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252"&gt;
+&lt;title&gt;Profile: Aphrodite&lt;/title&gt;
+&lt;link rel="stylesheet" type="text/css"&gt;&lt;/head&gt;
+&lt;body bgcolor="yellow"&gt;
+&lt;center&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;img src="./Profile_ Aphrodite_files/aphrodite.gif"&gt;
+&lt;h2&gt;Name: Aphrodite&lt;/h2&gt;
+&lt;br&gt;&lt;br&gt;
+Favorite animal: Dove
+&lt;br&gt;&lt;br&gt;
+Favorite color: Red
+&lt;br&gt;&lt;br&gt;
+Hometown: Mount Olympus
+&lt;/center&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Installing Beautifulsoup (1)</h3>
+                    <img src="imgs/pycharm_install_package1.PNG" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 450px"/>
+                </section>
+
+                <section>
+                    <h3>Installing Beautifulsoup (2)</h3>
+                    <img src="imgs/pycharm_install_package2.PNG" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 450px"/>
+                </section>
+
+                <section>
+                    <h3>Installing Beautifulsoup (3)</h3>
+                    <img src="imgs/pycharm_install_package3.PNG" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 450px"/>
+                </section>
+
+                <section>
+                    <h3>Using Beautiful Soup</h3>
+                    <div><pre class="solution-content python"><code>from bs4 import BeautifulSoup
+from urllib.request import urlopen
+my_address = "http://mattchoplin.com/python_city/" \
+             "practice/Profile_Dionysus.htm"
+html_page = urlopen(my_address)
+html_text = html_page.read().decode('utf-8')
+my_soup = BeautifulSoup(html_text, "html.parser")</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>BeautifulSoup: get_text()</h3>
+                    <ul>
+                        <li><strong>get_text()</strong></li>
+                        <ul>
+                            <li>is extracting only the text from an html document</li>
+                            <div><pre class="solution-content python"><code>print(my_soup.get_text())</code></pre></div>
+                        </ul>
+                        <li>there are lot of blank lines left but we can remove them with the method <strong>replace()</strong></li>
+                        <div><pre class="solution-content python"><code>print(my_soup.get_text().replace("\n\n\n",""))</code></pre></div>
+                        <li>Using BeautifulSoup to extract the text first and use the find() method is <em>sometimes</em> easier than to use regular expressions</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>BeautifulSoup: find_all()</h3>
+                    <ul>
+                        <li>find_all()</li>
+                        <ul>
+                            <li>returns a list of all elements of a particular tag given in argument</li>
+                        </ul>
+                    <div><pre class="solution-content python"><code>print(my_soup.find_all("img"))</code></pre></div>
+                        <li>What if the HTML page is broken?</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>BeautifulSoup: Tags</h3>
+                                        <div><pre class="solution-content python"><code style="line-height: 100%">[&lt;img src="dionysus.jpg"/&gt;, &lt;img src="grapes.png"&gt;&lt;br&gt;&lt;br&gt;
+Hometown: Mount Olympus
+&lt;br&gt;&lt;br&gt;
+Favorite animal: Leopard &lt;br&gt;
+&lt;br&gt;
+Favorite Color: Wine
+&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/img&gt;]</code></pre></div>
+                    <ul>
+                        <li>This is not what we were looking for. The &lt;img&gt; is not properly closed therefore BeautifulSoup ends up adding a fair
+                            amount of HTML after the image tag before inserting a &lt;/img&gt; tag on its own. This can happen with real case.</li>
+                        <li>NB: BeautifulSoup is storing HTML tags as <em>Tag</em> objects and we can extract information from each Tag.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>BeautifulSoup: Extracting information from Tags</h3>
+                    <ul>
+                        <li><strong>Tags</strong>:</li>
+                        <ul>
+                            <li>have a name</li>
+                            <li>have attributes, accessible using keys, like when we access values of a dictionary through its keys</li>
+                        </ul>
+                    </ul>
+                        <div><pre class="solution-content python"><code>for tag in my_soup.find_all("img"):
+    print(tag.name)
+    print(tag['src'])</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>BeautifulSoup: accessing a Tag through its name</h3>
+                    <ul>
+                        <div><pre class="solution-content python"><code>print(my_soup.title)</code></pre></div>
+                        <li>The HTML is cleaned up</li>
+                        <li>We can use the string attributes stored by the title</li>
+                        <div><pre class="solution-content python"><code>print(my_soup.title.string)</code></pre></div>
+                    </ul>
+
+                </section>
+                <section>
+                    <h3>The select method (1)</h3>
+                    <ul>
+                        <li>... will return a list of Tag objects, which is how Beautiful Soup represents an HTML element. The list will
+                        contain one Tag object for every match in the BeautifulSoup object's HTML</li>
+
+                    </ul>
+                </section>
+
+                <section id="beautifulsoup-select">
+                    <h3>The select method (2)</h3>
+                    <table style="font-size: 24px">
+						<tr>
+							<th style="width: 30%;">Selector passed to the select method</th>
+							<th>Will match...</th>
+						</tr>
+						<tr>
+							<td>soup.select('div')</td>
+							<td>All elements named &lt;div&gt;</td>
+						</tr>
+						<tr>
+							<td>soup.select('#author')</td>
+							<td>The element with an <strong>id</strong> attribute of <strong>author</strong></td>
+						</tr>
+						<tr>
+							<td>soup.select('.notice')</td>
+							<td>All elements that use a CSS</td>
+						</tr>
+						<tr>
+							<td>soup.select('div span')</td>
+							<td>All elements named &lt;span&gt; that are within an element named &lt;div&gt;</td>
+						</tr>
+						<tr>
+							<td>soup.select('div > span')</td>
+							<td>All elements named &lt;span&gt; that are directly within an element named &lt;div&gt;, with no other elements in between</td>
+						</tr>
+						<tr>
+							<td>soup.select('input[name]')</td>
+							<td>All elements named &lt;input&gt; that have a <strong>name</strong> attribute with any value</td>
+						</tr>
+						<tr>
+							<td>soup.select('input[type="button"]')</td>
+							<td>All elements named &lt;input&gt; that have an attribute name <strong>type</strong> with value <strong>button</strong></td>
+						</tr>
+					</table>
+                </section>
+
+                <section>
+                    <h3>Emulating a web browser</h3>
+                    <ul>
+                        <li>Sometimes we need to submit information to a web page, like a login page</li>
+                        <li>We need a web browser for that</li>
+                        <li><strong><a target="_blank" href="https://github.com/hickford/MechanicalSoup">MechanicalSoup</a></strong> is an alternative to urllib that can do all the same things but has more added
+                            functionality that will allow us to talk back to webpages without using a standalone browser,
+                            perfect for fetching web pages, clicking on buttons and links, and filling out and submitting forms</li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h3>Installing MechanicalSoup</h3>
+                    <ul>
+                        <li>You can install it with pip: <em>pip install MechanicalSoup</em> or within Pycharm (like what we did earlier with BeautifulSoup)</li>
+                        <li>You might need to restart your IDE for MechanicalSoup to load and be recognised</li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h3>MechanicalSoup: Opening a web page</h3>
+                    <ul>
+                        <li>Create a browser</li>
+                        <li>Get a web page which is a Response object</li>
+                        <li>Access the HTML content with the <em>soup</em> attribute</li>
+                        <div><pre class="solution-content python"><code>import mechanicalsoup
+
+my_browser = mechanicalsoup.Browser(
+                 soup_config={'features':'html.parser'})
+page = my_browser.get("http://mattchoplin.com/python_city/" \
+           "practice/Profile_Aphrodite.htm")
+print(page.soup)</code></pre></div>
+
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h3>MechanicalSoup: Submitting values to a form</h3>
+                    <ul>
+                        <li>Have a look at this <a target="_blank" href="https://whispering-reef-69172.herokuapp.com/login">login page</a></li>
+                        <li>The important section is the login form</li>
+                        <li>We can see that there is a submission &lt;form&gt; named "login" that includes two &lt;input&gt; tags, one named
+                            <em>username</em> and the other one named <em>password</em>.</li>
+                        <li>The third &lt;input&gt; is the actual "Submit" button</li>
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h3>MechanicalSoup: script to login</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">import mechanicalsoup
+
+my_browser = mechanicalsoup.Browser(
+    soup_config={'features':'html.parser'})
+login_page = my_browser.get(
+    "https://whispering-reef-69172.herokuapp.com/login")
+login_html = login_page.soup
+
+form = login_html.select("form")[0]
+form.select("input")[0]["value"] = "admin"
+form.select("input")[1]["value"] = "default"
+
+profiles_page = my_browser.submit(form, login_page.url)
+print(profiles_page.url)
+print(profiles_page.soup)</code></pre></div>
+
+                </section>
+
+                <section>
+                    <h3>Methods in MechanicalSoup</h3>
+                    <ul>
+                        <li>We created a Browser object</li>
+                        <li>We called the method <em>get</em> on the Browser object to get a web page</li>
+                        <li>We used the <em>select()</em> method to grab the form and input values in it</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Interacting with the Web in Real Time</h3>
+                    <ul>
+                        <li>We want to get data from a website that is constantly updated</li>
+                        <li>We actually want to simulate clicking on the "refresh" button</li>
+                        <li>We can do that with the <em>get</em> method of MechanicalSoup</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Use case: fetching the stock quote from Yahoo finance (1)</h3>
+                    <ul>
+                        <li>Let us identify what is needed</li>
+                        <li>
+                        <ul>
+                            <li>What is the source of the data? <br/><strong><a href="https://www.bloomberg.com/quote/YHOO:US">https://www.bloomberg.com/quote/YHOO:US</a></strong></li>
+
+                            <li>What do we want to extract from this source? <br/><strong>The stock price</strong></li>
+
+                        </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Use case: fetching the stock quote from Yahoo finance (2)</h3>
+
+                    <ul>
+                        <li>If we look at the source code, we can see what the tag is for the stock and how to retrieve it:</li>
+                        <li><div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">&lt;div class="price"&gt;40.08&lt;/div&gt;</code></pre></div></li>
+                        <li>We check that &lt;div class="price"&gt; only appears once in the webpage since
+                            it will be a way to identify the location of the current price</li>
+
+                    </ul>
+
+                </section>
+
+                <section>
+                    <h3>MechanicalSoup: script to find Yahoo current price</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">import mechanicalsoup
+
+my_browser = mechanicalsoup.Browser()
+page = my_browser.get("https://www.bloomberg.com/quote/YHOO:US")
+html_text = page.soup
+# return a list of all the tags where
+# the css class is 'price'
+my_tags = html_text.select(".price")
+# take the BeautifulSoup string out of the
+# first (and only) &lt;span&gt; tag
+my_price = my_tags[0].text
+print("The current price of "
+      "YHOO is: {}".format(my_price))</code></pre></div>
+
+                </section>
+
+                <section>
+                    <h3>Repeatedly get the Yahoo current price</h3>
+                    <ul>
+                        <li>Now that we know how to get the price of a stock from the Bloomberg web page, we can create a for loop to stay up to date</li>
+                        <li>Note that we should not overload the Bloomberg website with more requests than we need. And also, we should also have a look at their
+                            <a href="https://www.bloomberg.com/robots.txt">robots.txt</a> file to be sure that what we do is allowed
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Introduction to the <em>time.sleep()</em> method</h3>
+                    <ul>
+                        <li>The <em>sleep()</em> method of the module time takes a number of seconds as argument
+                            and waits for this number of seconds, it enables to delay the execution of a statement in the program</li>
+                    </ul>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">from time import sleep
+print "I'm about to wait for five seconds..."
+sleep(5)
+print "Done waiting!"</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Repeatedly get the Yahoo current price: script</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 24px;">from time import sleep
+import mechanicalsoup
+my_browser = mechanicalsoup.Browser()
+# obtain 1 stock quote per minute for the next 3 minutes
+for i in range(0, 3):
+    page = my_browser.get("https://www.bloomberg.com/quote/YHOO:US")
+    html_text = page.soup
+    # return a list of all the tags where the class is 'price'
+    my_tags = html_text.select(".price")
+    # take the BeautifulSoup string out of the first tag
+    my_price = my_tags[0].text
+    print("The current price of YHOO is: {}".format(my_price))
+    if i<2: # wait a minute if this isn't the last request
+        sleep(60)</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Exercise: putting it all together</h3>
+                    <ul>
+                        <li>Install a new library called <em>requests</em></li>
+                        <li>Using <a href="#/beautifulsoup-select">the select method</a> of BeautifulSoup, parse (that
+                            is, analyze and identify the parts of) the image of the day of <a href="http://xkcd.com/">http://xkcd.com/</a></li>
+                        <li>Using the <em>get</em> method of the <em>requests</em> library, download the image</li>
+                        <li>Complete the following program <a href="exercises/xkcd_incomplete.py">xkcd_incomplete.py</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Using request</h3>
+                    <ul>
+                        <li>You first have to import it</li>
+                        <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 24px;">import requests</code></pre></div>
+                        <li>If you want to download the webpage, use the get() method with a url in parameter, such as:</li>
+                        <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 24px;">res = requests.get(url)</code></pre></div>
+                        <li>Stop your program if there is an error with the raise_for_status() method</li>
+                        <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 24px;">res.raise_for_status()</code></pre></div>
+                    </ul>
+                </section>
+
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
