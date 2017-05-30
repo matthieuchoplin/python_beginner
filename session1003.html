@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 13</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Introduction to programming using Python</h2>
+					<h3>Session 13</h3>
+                    <p>Matthieu Choplin</p>
+                    <ul>
+                        <li>Introduction to modern web development using framework</li>
+					</ul>
+                    <p><a href='http://pythonguy.com/'>http://pythonguy.com/</a></p>
+				</section>
+
+				<section>
+					<h3>Objectives</h3>
+					<ul>
+                        <li>High level view of a modern web application</li>
+					</ul>
+				</section>
+
+                <section>
+					<h3>Front-end, Middleware, Backend</h3>
+					<ul>
+                        <li>Front-end: html, css, javascript, what the user sees</li>
+                        <li>Middleware: handle HTTP requests, sessions and link the front end to the backend</li>
+                        <li>Back end: where the data is stored, a analysed and processed</li>
+					</ul>
+				</section>
+
+                <section>
+                    <h3>MVC (Model View Controller) (1)</h3>
+                    <img src="imgs/mvc.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 400px"/>
+                </section>
+
+                <section>
+                    <h3>MVC (2)</h3>
+                    <ol>
+                        <li>A user requests to view a page by entering a URL.</li>
+                        <li>The application matches the URL to a predefined route.</li>
+                        <li>The controller action associated with the route is called.</li>
+                        <li>It uses the Models to retrieve all of the necessary data, organizes it, and sends it off to the…</li>
+                        <li>View, which then uses that data to render the final webpage presented to the the user in their browser.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>MVC (3)</h3>
+                    <img src="imgs/mvc_diagram_with_routes.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 400px"/>
+                </section>
+
+                <section>
+                    <h3>An example of a python web framework: flask</h3>
+                    <ul>
+                        <li>Doc for reference: http://flask.pocoo.org/docs/0.12/</li>
+                        <li>Installing flask</li>
+                        <li>Creating an "Hello World" page</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Hello World</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;"># ---- Flask Hello World ---- #
+# import the Flask class from the flask package
+from flask import Flask
+# create the application object
+app = Flask(__name__)
+# use the decorator pattern to
+# link the view function to a url
+@app.route("/")
+@app.route("/hello")
+# define the view using a function, which returns a string
+def hello_world():
+    return "Hello, World!"
+# start the development server using the run() method
+if __name__ == "__main__":
+    app.run()</code></pre></div>
+                    <p>When you run that script, what are the 2 urls that are going to show "Hello World"?</p>
+                </section>
+
+                <section>
+                    <h3>Explaining the code without the view function</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">from flask import Flask
+app = Flask(__name__)
+if __name__ == "__main__":
+                        app.run()</code></pre></div>
+                    <ol>
+                        <li>We imported the Flask class from	the	 	flask	 	library	in	order	to	create	our	web
+app.</li>
+                        <li>Next, an instance of the   Flask   class was created and assigned to the variable
+ app  .</li>
+                        <li>Finally, we used the   run()   method to run the app locally.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>Explaining the view function</h3>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">@app.route("/")
+@app.route("/hello")
+def hello_world():
+    return "Hello, World!"</code></pre></div>
+                    <ol>
+                        <li>Here	we	applied	two	decorators	-	 	@app.route("/")	 	and	 	@app.route("/hello")	 	to
+                            the	 	hello_world()	 	function.	These	decorators	are	used	to	define	<strong>routes</strong>.	In	other
+words,	we	created	two	routes	-	 	/	 	and	 	/hello	 	-	which	are	bound	to	our	main	url,
+http://127.0.0.1:5000.	Thus,	we	are	able	to	access	the	function	by	navigating	to
+either	http://127.0.0.1:5000	or	http://127.0.0.1:5000/hello.
+</li>
+                        <li>The	function	simply	returned	the	string	"Hello,	World!".</li>
+                    </ol>
+                    <p>What happen if you remove the 1st app.route('/') decorator?</p>
+                </section>
+
+                <section>
+                    <h3>Interlude on decorators (1)</h3>
+                    <ul>
+                        <li>Decorators are used as wrapper around functions</li>
+                        <li>They are functions that take in parameter a function and return a function</li>
+                    </ul>
+                    <p>Example:</p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">def my_decorator(function):
+    print("Decorator called with in parameter the function", function)
+    return function
+
+@my_decorator
+def hello():
+    print("Hello!")
+
+hello()</code></pre></div>
+                    <p><a href="http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/">http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/</a></p>
+                </section>
+
+                <section>
+                    <h3>Interlude on decorators (2)</h3>
+                    <p>With the following decorator:</p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">def my_decorator(function):
+    print("Decorator called with in parameter the function", function)
+    return function</code></pre></div>
+                    <p>We have...</p>
+<div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">@my_decorator
+def hello():
+    print("Hello!")</code></pre></div>
+                    <p>Equivalent to...</p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">def hello():
+    print("Hello!")
+hello = my_decorator(hello)</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Interlude on decorators (3)</h3>
+                    <p>The decorators are useful for modifying the behaviour of our functions</p>
+                    <p>In the context of a flask application, just remember that the url requests are mapped to the functions that are going to generate the views thanks to the app.route decorator</p>
+                    <p>To learn more about decorator: <a href="http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/">http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/</a></p>
+                </section>
+
+                <section>
+                    <h3>Dynamic	Routes</h3>
+                    <p>Now	to	make	it	dynamic	first	update	the	route	to	take	a	query	parameter:</p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">@app.route("/test/&lt;search_query&gt;")
+def search(search_query):
+    return search_query</code></pre></div>
+                    <p>Navigate	to	http://localhost:5000/test/hi.	You	should	see	"hi"	on	the	page.	Test	it	out	with
+some	different	URL	parameters.</p>
+                </section>
+
+                <section>
+                    <h3>Type converters (1)</h3>
+                    <p>URLs	are	generally	converted	to	a	string,	regardless	of	the	parameter. You can specify the type of parameter you expect with <strong>converters:</strong></p>
+                    <ul>
+                        <li> &lt;value&gt; is treated as unicode (string)</li>
+                        <li> &lt;int:value&gt; is treated as an integer</li>
+                        <li> &lt;float:value&gt; is	treated	as a floating point</li>
+                        <li> &lt;path:some/great/path/&gt; is treated as a path</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Type converters (2)</h3>
+                    <p>Examples, add the folowing to the app.py file and navigate to each url:</p>
+<div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">@app.route("/integer/&lt;int:value&gt;")
+def int_type(value):
+    print(value	+ 1)
+    return "correct"
+@app.route("/float/&lt;float:value&gt;")
+def float_type(value):
+    print(value + 1)
+    return "correct"
+# dynamic route that accepts slashes
+@app.route("/path/&lt;path:value&gt;")
+def path_type(value):
+    print(value)
+    return "correct"</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Response Object (1)</h3>
+                    <p>Open the developer tool of your browser and look for the status code</p>
+                    <p>What is the status code of a successful response? Else, what is it?</p>
+                    <p>See <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a></p>
+                </section>
+
+                <section>
+                    <h3>Response Object (2)</h3>
+                    <p>We can control the status code we return, Example:</p>
+<div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">@app.route("/name/&lt;name&gt;")
+def index(name):
+    if name.lower() == "michael":
+        return "Hello, {}".format(name), 200
+    else :
+        return "Not Found", 404</name></code></pre></div>
+                </section>
+
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
