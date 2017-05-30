@@ -233,7 +233,23 @@ def index(name):
     if name.lower() == "michael":
         return "Hello, {}".format(name), 200
     else :
-        return "Not Found", 404</name></code></pre></div>
+        return "Not Found", 404&lt;/name&gt;</code></pre></div>
+                </section>
+
+                <section>
+                    <h3>Accessing database</h3>
+                    <p>Download the following database file: <a href="test_database.db">test_database.db</a></p>
+                    <div><pre class="solution-content python"><code style="line-height: 100%;font-size: 26px;">from flask import Flask, g
+def connect_db():
+    return sqlite3.connect("test_database.db")
+
+@app.route('/persons')
+def main():
+    g.db = connect_db()
+    cur = g.db.execute('select FirstName from People')
+    persons = '\n'.join([p[0] for p in cur.fetchall()])
+    g.db.close()
+    return persons</code></pre></div>
                 </section>
 
 
