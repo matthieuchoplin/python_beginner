@@ -252,6 +252,52 @@ def main():
     return persons</code></pre></div>
                 </section>
 
+                <section>
+                    <h3>Sum up</h3>
+                    <ul>
+                        <li>Model: is what we have in database</li>
+                        <li>Controller: is what makes front-end and backend interact</li>
+                        <li>View: was a simple string for now but the idea is to render that in html</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Templates: the view (1)</h3>
+                    <p>Flask uses by default a templating engine called Jinja</p>
+                    <p>Example:</p>
+<div><pre><code style="line-height: 100%;font-size: 26px;">from flask import Flask, render_template
+app = Flask(__name__)
+
+@app.route("/")
+def template_test():
+    return render_template('template.html', my_string="Wheeeee!", my_list=[0,1,2,3,4,5])
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre></div>
+                    <p>Create a directory called templates in which to put the html file</p>
+                </section>
+                <section>
+                    <h3>Templates: the view (2)</h3>
+                    <p>template.html would be:</p>
+<div><pre><code style="line-height: 100%;font-size: 26px;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Flask Template Example&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class="container"&gt;
+      &lt;p&gt;My string: {{my_string}}&lt;/p&gt;
+      &lt;p&gt;Value from the list: {{my_list[3]}}&lt;/p&gt;
+      &lt;p&gt;Loop through the list:&lt;/p&gt;
+      &lt;ul&gt;
+        {% for n in my_list %}
+        &lt;li&gt;{{n}}&lt;/li&gt;
+        {% endfor %}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+                </section>
 
 			</div>
 		</div>
