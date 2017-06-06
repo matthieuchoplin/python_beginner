@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Session 14</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+		<!-- Custom css -->
+        <link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Introduction to programming using Python</h2>
+					<h3>Session 14</h3>
+                    <p>Matthieu Choplin</p>
+                    <ul>
+                        <li>Building a blog application using the flask framework</li>
+					</ul>
+                    <p><a href='http://mattchoplin.com/'>http://mattchoplin.com/</a></p>
+				</section>
+
+				<section>
+					<h3>Objectives</h3>
+					<ol>
+                        <li> After a user logs in they are presented with all of the blog posts.</li>
+                        <li> Users can add new, text-only blog entries from the same screen, read the entries themselves, or log out.</li>
+					</ol>
+				</section>
+
+                <section>
+					<h3>Setting up the project</h3>
+					<p>Create a new project in Pycharm that you call "flask-blog"</p>
+                    <p>Within that project, create the following structure:</p>
+                    <pre>├── blog.py
+├── static
+│ ├── css
+│ ├── img
+│ └── js
+└── templates</pre>
+				</section>
+
+                <section>
+                    <h3>Structure</h3>
+                    <ol>
+                        <li>All the logic will be in the blog.py file</li>
+                        <li>The "static" directory holds static files (anything that is not dynamic) like JavaScript files, CSS stylesheets, and images</li>
+                        <li>Finally, the "template" folder houses all of our HTML files.</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>blog.py: the application controller.</h3>
+                    <img src="imgs/blog_controller.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 400px"/>
+                    <p>Flask works with a client-server model. The server receives HTTP requests from the
+client (the web browser), then returns content back to the client in the form of a
+response</p>
+                </section>
+
+                <section>
+                    <h3>Installing flask</h3>
+                    <p>If you do not have flask installed. From Pycharm, go to
+                        File / Settings / Project / Project interpreter /  Search for the "Flask" package and install it</p>
+                </section>
+
+                <section>
+                    <h3>Flask application structure: a MVC</h3>
+                    <img src="imgs/mvc.png" style="background:none; border:none; box-shadow:none; margin-top:0px;height: 400px"/>
+                    <ul>
+                        <li>Model</li>
+                        <li>View</li>
+                        <li>Controller</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Model</h3>
+                </section>
+
+                <section>
+                    <h3>Controller</h3>
+                </section>
+
+                <section>
+                    <h3>View</h3>
+                </section>
+
+                <section>
+                    <h3>Template</h3>
+                </section>
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				slideNumber: true,
+				center: false,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/menu/menu.js' },
+					{ src: 'plugin/jquery-2.0.0.min.js' },
+					{ src: 'plugin/custom.js' },
+
+				]
+			});
+		</script>
+	</body>
+</html>
